@@ -1,130 +1,113 @@
 <div class="w3-margin-top" align="center">
 
-    <div class="w3-card-2 w3-padding-top" style="min-height:360px;width:80%">
-        <p>Select action from the buttons below:</p>
+    <div class="w3-card-2 w3-padding-top w3-margin" style="min-height:360px;width:80%">
+        <h4>Select action from the buttons below:</h4>
         <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="button" id="addVehButton" value="Add Vehicle">
         <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="button" id="editVehButton" value="Edit Vehicle">
         <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="button" id="delVehButton" value="Delete Vehicle">
         <br>
         <form id="at" style="display:none" method="post" action="${pageContext.request.contextPath}/insVehServlet">
-            <div class="w3-responsive w3-card-4 w3-margin-top">
-                <p>Vehicle Information Section.</p>
+            <div class="w3-responsive w3-card-4 w3-margin">
+                <h4>Vehicle Information Section:</h4>
                 <p>Please enter the vehicle Number Plate in the format "XnnnnXX" or "XXnnnnXX" where "X" are latin letters and "n" are arabic numbers.</p>
-                <div class="w3-center w3-margin">
-                    <label class="w3-label w3-left w3-margin">Vehicle Identification Number: </label>
-                    <div class="w3-left">
-                        <input class="w3-input" name='VIN' type="text" required style="width:200px">
-                        <label class="w3-label w3-validate">VIN</label>
+                <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
+                    <div style="width: 50%; float: left; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="vin" type="text" required style="text-transform:uppercase;width: 100%" maxlength="20">
+                        <label class="w3-label w3-validate">Vehicle Identification Number</label>
+                    </div>
+                    <div style="width: 50%; float: right; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="numberplate" type="text" required style="text-transform:uppercase;width:100%" maxlength="8">
+                        <label class="w3-label w3-validate">Number Plate</label>
+                    </div>
+                    <div style="width: 50%; float: left; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="make" type="text" required style="width:100%" maxlength="50">
+                        <label class="w3-label w3-validate">Make</label>
+                    </div>
+                    <div style="width: 50%; float: right; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="model" type="text" required style="width:100%" maxlength="50">
+                        <label class="w3-label w3-validate">Model</label>
+                    </div>
+                    <div style="width: 50%; float: left; margin: 0px 0px 10px 0px; padding: 2px">
+                        <label class="w3-label">Engine Type: </label>
+                        <select class="w3-select" name="engineType" required style="width: 50%">
+                            <option value="Petrol">Petrol</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Electric">Electric</option>
+                        </select>
+                    </div>
+                    <div style="width: 50%; float: right; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="engineSize" type="text" required style="width:100%" maxlength="50">
+                        <label class="w3-label w3-validate">Engine Size</label>
+                    </div>
+                    <div style="width: 50%; float: left; margin: 10px 0px 0px 0px; padding: 2px">
+                        <label class="w3-label">Production Date:</label>
+                        <input class="w3-select" name="year" type="date" required style="width:50%">
+                    </div>
+                    <div style="width: 50%; float: right; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="color" type="text" required style="width:100%" maxlength="50">
+                        <label class="w3-label w3-validate">Color</label>
+                    </div>
+                    <div class="w3-margin" style="clear: both">
+                        <label class="w3-label">Picture of vehicle: </label>
+                        <input type="file" name="picture" required style="width: 50%">
                     </div>
                 </div>
-
             </div>
-            <p>Owner Information Section.</p>
-            <p>Please enter the owners EGN with 10 arabic numbers.</p>
-            <div class="w3-responsive w3-card-4 w3-margin-top">
-                <table class="w3-table w3-striped w3-bordered">
-                    <tr>
-                        <th class="w3-theme"><div align="center">EGN</div></th>
-                        <th class="w3-theme"><div align="center">Name</div></th>
-                        <th class="w3-theme"><div align="center">Family Name</div></th>
-                        <th class="w3-theme"><div align="center">City</div></th>
-                        <th class="w3-theme"><div align="center">Address</div></th>
 
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <div>
-                                <input class="w3-input w3-center" name='EGN' type="text" required style="width:120px" maxlength="10">
-                            </div>
-                        </td>
-
-                        <td>
-                            <div align="center">
-                                <input class="w3-input w3-center" name='Name' type="text" required>
-                            </div>
-                        </td>
-
-                        <td>
-                            <div align="center">
-                                <input class="w3-input w3-center" name='FamilyName' type="text" required>
-                            </div>
-                        </td>
-
-                        <td>
-                            <div align="center">
-                                <input class="w3-input w3-center" name='City' type="text" required>
-                            </div>
-                        </td>
-
-                        <td>
-                            <div align="center">
-                                <input class="w3-input w3-center" name='Address' type="text" required>
-                            </div>
-                        </td>
-
-
-                    </tr>
-                </table>
+            <div class="w3-responsive w3-card-4 w3-margin">
+                <h4>Owner Information Section.</h4>
+                <p>Please enter the owners EGN / EIK with 10 arabic numbers.</p>
+                <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
+                    <div style="width: 50%; float: left; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="ownerID" type="text" required style="width:100%" maxlength="50">
+                        <label class="w3-label w3-validate">EGN / EIK</label>
+                    </div>
+                    <div style="width: 50%; float: right; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="ownerCity" type="text" required style="width:100%" maxlength="50">
+                        <label class="w3-label w3-validate">City</label>
+                    </div>
+                    <div style="width: 50%; float: left; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="ownerName" type="text" required style="width:100%" maxlength="50">
+                        <label class="w3-label w3-validate">First Name</label>
+                    </div>
+                    <div style="width: 50%; float: right; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="ownerFName" type="text" required style="width:100%" maxlength="50">
+                        <label class="w3-label w3-validate">Family Name</label>
+                    </div>
+                    <div class="w3-margin" style="clear: both">
+                        <input class="w3-input w3-center" name="ownerAddress" type="text" required style="width:100%">
+                        <label class="w3-label w3-validate">Address</label>
+                    </div>
+                </div>
             </div>
-            <br>
-            <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Add">
+            <input class="w3-btn w3-dark-grey w3-hover-light-grey w3-margin" type="submit" value="Add">
         </form>
 
         <form id="et" style="display:none" method="post" action="vehmgmtedit.jsp">
-            <div class="w3-responsive w3-card-4 w3-margin-top" style="width:25%">
-                <table class="w3-table w3-striped w3-bordered">
-                    <tr>
-                        <th class="w3-theme">
-                            <div align="center">
-                                Number Plate
-                            </div>
-                        </th>
-                        <th class="w3-theme"></th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div align="center">
-                                <input class="w3-input w3-center" name='NumberPlate' type="text" required style="text-transform:uppercase;width:120px" maxlength="8">
-                            </div>
-                        </td>
-
-                        <td>
-                            <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Edit">
-                        </td>
-
-                    </tr>
-                </table>
+            <div class="w3-responsive w3-card-4 w3-margin">
+                <h4>Please enter the vehicle Number Plate to edit it's record:</h4>
+                <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
+                    <div style="width: 50%; margin: 10px auto; padding: 2px">
+                        <input class="w3-input w3-center" name="numberplate" type="text" required style="text-transform:uppercase;width:100%" maxlength="8">
+                        <label class="w3-label w3-validate">Number Plate</label>
+                    </div>
+                    <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Edit">
+                </div>
             </div>
         </form>
 
         <form id="dt" style="display:none" method="post" action="${pageContext.request.contextPath}/delVehServlet">
-            <div class="w3-responsive w3-card-4 w3-margin-top" style="width:25%">
-                <table class="w3-table w3-striped w3-bordered">
-                    <tr>
-                        <th class="w3-theme">
-                            <div align="center">
-                                Number Plate
-                            </div>
-                        </th>
-                        <th class="w3-theme"></th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div align="center">
-                                <input class="w3-input w3-center" name='NumberPlate' type="text" required style="text-transform:uppercase;width:120px" maxlength="8">
-                            </div>
-                        </td>
-
-                        <td>
-                            <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Delete">
-                        </td>
-
-                    </tr>
-                </table>
+            <div class="w3-responsive w3-card-4 w3-margin">
+                <h4>Please enter the vehicle Number Plate to delete it's record:</h4>
+                <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
+                    <div style="width: 50%; margin: 10px auto; padding: 2px">
+                        <input class="w3-input w3-center" name="numberplate" type="text" required style="text-transform:uppercase;width:100%" maxlength="8">
+                        <label class="w3-label w3-validate">Number Plate</label>
+                    </div>
+                    <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Delete">
+                </div>
             </div>
         </form>
-        <br>
 
     </div>
 </div>
