@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2d67b7cb-7b4e-46c2-85db-9fec4ad41196" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/adminPanelLog.php" afterPath="$PROJECT_DIR$/pages/adminPanelLog.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/vehMgmtPanel.php" afterPath="$PROJECT_DIR$/pages/vehMgmtPanel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/changeLogPage.php" afterPath="$PROJECT_DIR$/src/changeLogPage.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,7 +20,7 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
+            <state relative-caret-position="1428">
               <caret line="84" column="41" lean-forward="false" selection-start-line="84" selection-start-column="41" selection-end-line="84" selection-end-column="41" />
               <folding />
             </state>
@@ -29,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/pages/home.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
-              <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="25" selection-end-column="83" />
+              <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="25" selection-end-column="83" />
               <folding />
             </state>
           </provider>
@@ -38,47 +40,48 @@
       <file leaf-file-name="vehMgmtPanel.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/vehMgmtPanel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="82" column="75" lean-forward="false" selection-start-line="82" selection-start-column="75" selection-end-line="82" selection-end-column="75" />
+            <state relative-caret-position="-731">
+              <caret line="8" column="85" lean-forward="false" selection-start-line="8" selection-start-column="85" selection-end-line="8" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adminPanelLog.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/adminPanelLog.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="75" column="31" lean-forward="true" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#4;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#5;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#6;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#7;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#7;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#8;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#8;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#4;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#form#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#form#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#form#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#form#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <marker date="1504863572613" expanded="true" signature="285:328" ph="SELECT * FRO... log" />
+                <marker date="1504863572613" expanded="true" signature="1665:1692" ph="..." />
+                <marker date="1504863572613" expanded="true" signature="2007:2106" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="changeLogPage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/changeLogPage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+              <folding>
+                <marker date="1504793904772" expanded="true" signature="341:390" ph="SELECT * FRO... log" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adminPanel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/adminPanel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2771">
+              <caret line="163" column="10" lean-forward="false" selection-start-line="163" selection-start-column="10" selection-end-line="163" selection-end-column="10" />
+              <folding>
+                <marker date="1502463223775" expanded="true" signature="288:389" ph="SELECT login... logins" />
+                <marker date="1502463223775" expanded="true" signature="520:562" ph="SELECT * FRO... log" />
               </folding>
             </state>
           </provider>
@@ -117,9 +120,9 @@
         <option value="$PROJECT_DIR$/src/logoutScript.php" />
         <option value="$PROJECT_DIR$/pages/adminPanel.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/pages/adminPanelLog.php" />
-        <option value="$PROJECT_DIR$/src/changeLogPage.php" />
         <option value="$PROJECT_DIR$/pages/vehMgmtPanel.php" />
+        <option value="$PROJECT_DIR$/src/changeLogPage.php" />
+        <option value="$PROJECT_DIR$/pages/adminPanelLog.php" />
       </list>
     </option>
   </component>
@@ -151,20 +154,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Diplomna">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -221,7 +211,20 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Diplomna">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -342,14 +345,17 @@
       <workItem from="1502461771360" duration="1545000" />
       <workItem from="1502884792081" duration="5176000" />
       <workItem from="1503490243785" duration="6650000" />
+      <workItem from="1504781826435" duration="595000" />
+      <workItem from="1504784990580" duration="9314000" />
+      <workItem from="1504860257865" duration="3349000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52807000" />
+    <option name="totallyTimeSpent" value="66065000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24921875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -385,37 +391,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/addUserScript.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="84" column="49" lean-forward="true" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="49" />
-          <folding>
-            <marker date="1502452358248" expanded="true" signature="2954:3094" ph="INSERT INTO logins... " />
-            <marker date="1502452358248" expanded="true" signature="3164:3180" ph="..." />
-            <marker date="1502452358248" expanded="true" signature="3264:3350" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3352" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3365" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3367" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3393" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3394" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3403" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3641:3657" ph="..." />
-            <marker date="1502452358248" expanded="true" signature="3772:3863" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/loginScript.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="47" lean-forward="false" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
-          <folding>
-            <marker date="1502462351220" expanded="true" signature="620:690" ph="SELECT Usern... logins" />
-            <marker date="1502462351220" expanded="true" signature="1365:1479" ph="INSERT INTO log... " />
-            <marker date="1502462351220" expanded="true" signature="1700:1821" ph="INSERT INTO log... " />
-            <marker date="1502462351220" expanded="true" signature="2062:2182" ph="INSERT INTO log... " />
-            <marker date="1502462351220" expanded="true" signature="2654:2670" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -431,13 +410,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-          <folding>
-            <marker date="1502462351220" expanded="true" signature="620:690" ph="SELECT Usern... logins" />
-            <marker date="1502462351220" expanded="true" signature="1365:1479" ph="INSERT INTO log... " />
-            <marker date="1502462351220" expanded="true" signature="1700:1821" ph="INSERT INTO log... " />
-            <marker date="1502462351220" expanded="true" signature="2062:2182" ph="INSERT INTO log... " />
-            <marker date="1502462351220" expanded="true" signature="2654:2670" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -445,10 +417,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="70" lean-forward="false" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
-          <folding>
-            <marker date="1502463223775" expanded="true" signature="288:389" ph="SELECT login... logins" />
-            <marker date="1502463223775" expanded="true" signature="520:562" ph="SELECT * FRO... log" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -456,7 +424,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="94" lean-forward="false" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="94" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -464,19 +431,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
           <caret line="51" column="19" lean-forward="true" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
-          <folding>
-            <marker date="1502452358248" expanded="true" signature="2954:3094" ph="INSERT INTO logins... " />
-            <marker date="1502452358248" expanded="true" signature="3164:3180" ph="..." />
-            <marker date="1502452358248" expanded="true" signature="3264:3350" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3352" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3365" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3367" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3393" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3394" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3403" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3641:3657" ph="..." />
-            <marker date="1502452358248" expanded="true" signature="3772:3863" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -492,13 +446,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-          <folding>
-            <marker date="1502462351220" expanded="true" signature="620:690" ph="SELECT Usern... logins" />
-            <marker date="1502462351220" expanded="true" signature="1365:1479" ph="INSERT INTO log... " />
-            <marker date="1502462351220" expanded="true" signature="1700:1821" ph="INSERT INTO log... " />
-            <marker date="1502462351220" expanded="true" signature="2062:2182" ph="INSERT INTO log... " />
-            <marker date="1502462351220" expanded="true" signature="2654:2670" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -506,10 +453,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="73" lean-forward="true" selection-start-line="9" selection-start-column="73" selection-end-line="9" selection-end-column="73" />
-          <folding>
-            <marker date="1502463223775" expanded="true" signature="288:389" ph="SELECT login... logins" />
-            <marker date="1502463223775" expanded="true" signature="520:562" ph="SELECT * FRO... log" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -517,7 +460,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="45" lean-forward="false" selection-start-line="0" selection-start-column="45" selection-end-line="0" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -525,19 +467,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="21" column="2" lean-forward="true" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
-          <folding>
-            <marker date="1502452358248" expanded="true" signature="2954:3094" ph="INSERT INTO logins... " />
-            <marker date="1502452358248" expanded="true" signature="3164:3180" ph="..." />
-            <marker date="1502452358248" expanded="true" signature="3264:3350" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3352" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3365" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3367" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3393" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3394" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3403" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3641:3657" ph="..." />
-            <marker date="1502452358248" expanded="true" signature="3772:3863" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -561,7 +490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="6" lean-forward="false" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -569,7 +497,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -577,10 +504,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="82" lean-forward="false" selection-start-line="6" selection-start-column="82" selection-end-line="6" selection-end-column="82" />
-          <folding>
-            <marker date="1502463223775" expanded="true" signature="288:389" ph="SELECT login... logins" />
-            <marker date="1502463223775" expanded="true" signature="520:562" ph="SELECT * FRO... log" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -588,7 +511,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="46" lean-forward="false" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -612,7 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -620,10 +541,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
-          <folding>
-            <marker date="1502463223775" expanded="true" signature="288:389" ph="SELECT login... logins" />
-            <marker date="1502463223775" expanded="true" signature="520:562" ph="SELECT * FRO... log" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -631,7 +548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="46" lean-forward="false" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -639,7 +555,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -655,10 +570,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
-          <folding>
-            <marker date="1502463223775" expanded="true" signature="288:389" ph="SELECT login... logins" />
-            <marker date="1502463223775" expanded="true" signature="520:562" ph="SELECT * FRO... log" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -666,7 +577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="46" lean-forward="false" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -674,7 +584,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -712,7 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="107" lean-forward="false" selection-start-line="2" selection-start-column="107" selection-end-line="2" selection-end-column="107" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -749,7 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="94" lean-forward="false" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="94" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -757,7 +664,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="81" lean-forward="false" selection-start-line="8" selection-start-column="81" selection-end-line="8" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -765,7 +671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="68" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="8" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -773,15 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="30" column="37" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
-          <folding>
-            <marker date="1502455275677" expanded="true" signature="252:268" ph="..." />
-            <marker date="1502455275677" expanded="true" signature="389:405" ph="..." />
-            <marker date="1502455275677" expanded="true" signature="978:994" ph="..." />
-            <marker date="1502455275677" expanded="true" signature="1606:1661" ph="UPDATE login... " />
-            <marker date="1502455275677" expanded="true" signature="1606:1678" ph="UPDATE login... " />
-            <marker date="1502455275677" expanded="true" signature="1748:1764" ph="..." />
-            <marker date="1502455275677" expanded="true" signature="1857:2007" ph="INSERT INTO log... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -789,19 +685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="29" column="45" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="45" />
-          <folding>
-            <marker date="1502452358248" expanded="true" signature="2954:3094" ph="INSERT INTO logins... " />
-            <marker date="1502452358248" expanded="true" signature="3164:3180" ph="..." />
-            <marker date="1502452358248" expanded="true" signature="3264:3350" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3352" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3365" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3367" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3393" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3394" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3264:3403" ph="INSERT INTO log... " />
-            <marker date="1502452358248" expanded="true" signature="3641:3657" ph="..." />
-            <marker date="1502452358248" expanded="true" signature="3772:3863" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -809,9 +692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-          <folding>
-            <marker date="1502462547066" expanded="true" signature="371:473" ph="INSERT INTO log... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -819,50 +699,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="533">
           <caret line="53" column="36" lean-forward="false" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
-          <folding>
-            <marker date="1502462351220" expanded="true" signature="620:690" ph="SELECT Usern... logins" />
-            <marker date="1502462351220" expanded="true" signature="1365:1479" ph="INSERT INTO log... " />
-            <marker date="1502462351220" expanded="true" signature="1700:1821" ph="INSERT INTO log... " />
-            <marker date="1502462351220" expanded="true" signature="2062:2182" ph="INSERT INTO log... " />
-            <marker date="1502462351220" expanded="true" signature="2654:2670" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/changeLogPage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/adminPanelLog.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding>
-            <marker date="1503406133195" expanded="true" signature="2377:2445" ph="..." />
-            <marker date="1503406133195" expanded="true" signature="2377:2694" ph="..." />
-            <marker date="1503406133195" expanded="true" signature="2488:2679" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/adminPanel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="163" column="10" lean-forward="false" selection-start-line="163" selection-start-column="10" selection-end-line="163" selection-end-column="10" />
-          <folding>
-            <marker date="1502463223775" expanded="true" signature="288:389" ph="SELECT login... logins" />
-            <marker date="1502463223775" expanded="true" signature="520:562" ph="SELECT * FRO... log" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
+        <state relative-caret-position="1428">
           <caret line="84" column="41" lean-forward="false" selection-start-line="84" selection-start-column="41" selection-end-line="84" selection-end-column="41" />
           <folding />
         </state>
@@ -871,55 +713,57 @@
     <entry file="file://$PROJECT_DIR$/pages/home.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
-          <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="25" selection-end-column="83" />
+          <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="25" selection-end-column="83" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/adminPanel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2771">
+          <caret line="163" column="10" lean-forward="false" selection-start-line="163" selection-start-column="10" selection-end-line="163" selection-end-column="10" />
+          <folding>
+            <marker date="1502463223775" expanded="true" signature="288:389" ph="SELECT login... logins" />
+            <marker date="1502463223775" expanded="true" signature="520:562" ph="SELECT * FRO... log" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="2170" column="0" lean-forward="false" selection-start-line="2170" selection-start-column="0" selection-end-line="2170" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/changeLogPage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+          <folding>
+            <marker date="1504793904772" expanded="true" signature="341:390" ph="SELECT * FRO... log" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/adminPanelLog.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="75" column="31" lean-forward="true" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1504863572613" expanded="true" signature="285:328" ph="SELECT * FRO... log" />
+            <marker date="1504863572613" expanded="true" signature="1665:1692" ph="..." />
+            <marker date="1504863572613" expanded="true" signature="2007:2106" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/vehMgmtPanel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="82" column="75" lean-forward="false" selection-start-line="82" selection-start-column="75" selection-end-line="82" selection-end-column="75" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#div#4;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#5;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#6;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#7;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#8;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#8;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#4;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#form#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#form#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#form#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#form#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="-731">
+          <caret line="8" column="85" lean-forward="false" selection-start-line="8" selection-start-column="85" selection-end-line="8" selection-end-column="85" />
+          <folding />
         </state>
       </provider>
     </entry>

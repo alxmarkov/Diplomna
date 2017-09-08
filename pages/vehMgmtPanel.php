@@ -6,7 +6,7 @@
         <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="button" id="editVehButton" value="Edit Vehicle">
         <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="button" id="delVehButton" value="Delete Vehicle">
         <br>
-        <form id="at" style="display:none" method="post" action="${pageContext.request.contextPath}/insVehServlet">
+        <form id="at" style="display:none" method="post" enctype="multipart/form-data" action="">
             <div class="w3-responsive w3-card-4 w3-margin">
                 <h4>Vehicle Information Section:</h4>
                 <p>Please enter the vehicle Number Plate in the format "XnnnnXX" or "XXnnnnXX" where "X" are latin letters and "n" are arabic numbers.</p>
