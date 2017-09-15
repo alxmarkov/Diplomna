@@ -31,20 +31,20 @@
             $dbName = "vis_database";
             $nameOfAdmin = $_SESSION['username'];
             $currentDate = date("Y-m-d h:i:sa");
+            $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUsername);
             try {
-                $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUsername);
-                // set the PDO error mode to exception
+                $conn->beginTransaction();
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                //                echo "<p>Connected successfully<br></p>";
                 $sql = "UPDATE logins SET Active='$userActive' WHERE Username='$manipulatedUser'";
                 $conn->exec($sql);
                 echo "<p style='font-weight: 600'>User " . $manipulatedUser . " " . $resultMessage . "!<br></p>";
                 $sqlLog = "INSERT INTO log (DateTimes, Usernames, Actions, Records, Tables) VALUES ('$currentDate', '$nameOfAdmin' , '$logMessage', '$manipulatedUser', 'logins')";
                 $conn->exec($sqlLog);
+                $conn->commit();
             } catch (PDOException $e) {
+                $conn->rollBack();
                 echo "Connection failed: " . $e->getMessage();
             }
-
             $conn = null;
         }
         ?>

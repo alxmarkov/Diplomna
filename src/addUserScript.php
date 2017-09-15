@@ -75,20 +75,20 @@
             $dbUsername = "root";
             $dbName = "vis_database";
             $nameOfAdmin = $_SESSION['username'];
+            $conn = new PDO("mysql:host=$serverName;dbname=$dbName", $dbUsername);
             try {
-                $conn = new PDO("mysql:host=$serverName;dbname=$dbName", $dbUsername);
-                // set the PDO error mode to exception
+                $conn->beginTransaction();
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//                echo "<p>Connected successfully<br></p>";
                 $sql = "INSERT INTO logins (Username, Password, Role, Active, DateAdded) VALUES ('$newUser', '$newPassHash', '$newRole', '$newActive', '$dateAdded')";
                 $conn->exec($sql);
                 echo "<p style='font-weight: 600'>New user " . $newUser . " added succesfully!<br></p>";
                 $sqlLog = "INSERT INTO log (DateTimes, Usernames, Actions, Records, Tables) VALUES ('$dateAdded', '$nameOfAdmin' , 'Added User', '$newUser', 'logins')";
                 $conn->exec($sqlLog);
+                $conn->commit();
             } catch (PDOException $e) {
+                $conn->rollBack();
                 echo "Connection failed: " . $e->getMessage();
             }
-
             $conn = null;
         }
         else {
