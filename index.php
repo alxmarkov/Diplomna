@@ -92,6 +92,12 @@ switch ($bodyName) {
         $page = "pages/vehMgmtPanel.php";
         break;
     }
+    case "addVehicle" : {
+        $topHeading = "Vehicle Information Service";
+        $pageName = "Vehicle Management Panel";
+        $page = "src/addVehicleScript.php";
+        break;
+    }
     default : {
         $topHeading = "Welcome to Aleksandar Markov's";
         $pageName = "Vehicle Information Service";

@@ -8,6 +8,7 @@
         <br>
         <form id="at" style="display:none" method="post" enctype="multipart/form-data" action="">
             <div class="w3-responsive w3-card-4 w3-margin">
+                <input type="hidden" name="page" value="addVehicle">
                 <h4>Vehicle Information Section:</h4>
                 <p>Please enter the vehicle Number Plate in the format "XnnnnXX" or "XXnnnnXX" where "X" are latin letters and "n" are arabic numbers.</p>
                 <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
