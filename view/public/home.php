@@ -1,6 +1,12 @@
 <?php
-    include("./assets/captcha/simple-php-captcha.php");
+    session_start();
+    include("../../assets/captcha/simple-php-captcha.php");
     $_SESSION['captcha'] = simple_php_captcha();
+
+    $topHeading = "Welcome to Aleksandar Markov's";
+    $pageName = "Vehicle Information Service";
+    require_once ("../components/headerNotLoggedInValues.php");
+    require_once ("../components/header.php");
 ?>
 
 <div class="w3-row-padding w3-center w3-margin-top">
@@ -16,7 +22,7 @@
         </div>
     </div>
 
-    <form method="post" action="">
+    <form method="post" action="publicSearch.php">
         <input type="hidden" name="page" value="publicSearch">
         <div class="w3-half">
             <div class="w3-card-2 w3-padding-top" style="min-height:360px">
@@ -39,3 +45,7 @@
     </form>
 
 </div>
+
+<?php
+    include_once ("../components/footer.php");
+?>

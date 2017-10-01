@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    $topHeading = "Vehicle Information Service";
+    $pageName = "Vehicle Management Panel";
+    require_once ("../components/headerLoggedInValues.php");
+    require_once ("../components/header.php");
+?>
+
 <div class="w3-margin-top" align="center">
 
     <div class="w3-card-2 w3-padding-top w3-margin" style="min-height:360px;width:80%">
@@ -6,9 +15,8 @@
         <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="button" id="editVehButton" value="Edit Vehicle">
         <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="button" id="delVehButton" value="Delete Vehicle">
         <br>
-        <form id="at" style="display:none" method="post" enctype="multipart/form-data" action="">
+        <form id="at" style="display:none" method="post" enctype="multipart/form-data" action="../../controller/addVehicleController.php">
             <div class="w3-responsive w3-card-4 w3-margin">
-                <input type="hidden" name="page" value="addVehicle">
                 <h4>Vehicle Information Section:</h4>
                 <p>Please enter the vehicle Number Plate in the format "XnnnnXX" or "XXnnnnXX" where "X" are latin letters and "n" are arabic numbers.</p>
                 <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
@@ -60,7 +68,7 @@
                 <p>Please enter the owners EGN / EIK with 10 arabic numbers.</p>
                 <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
                     <div style="width: 50%; float: left; margin: 0; padding: 2px">
-                        <input class="w3-input w3-center" name="ownerID" type="text" required style="width:100%" maxlength="50">
+                        <input class="w3-input w3-center" name="ownerID" type="text" required style="width:100%" maxlength="10">
                         <label class="w3-label w3-validate">EGN / EIK</label>
                     </div>
                     <div style="width: 50%; float: right; margin: 0; padding: 2px">
@@ -186,3 +194,7 @@
     };
 
 </script>
+
+<?php
+    include_once ("../components/footer.php");
+?>

@@ -1,24 +1,16 @@
 <?php
 
-    $servername = "localhost";
-    $username = "root";
-    $dbname = "vis_database";
+    session_start();
 
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sqlUsers = $conn->prepare("SELECT logins.Username, logins.Role, logins.Active FROM logins ORDER BY logins.DateAdded DESC LIMIT 5");
-        $sqlUsers->execute();
-        $resultUsers = $sqlUsers->fetchAll(PDO::FETCH_ASSOC);
+    $topHeading = "Vehicle Information Service";
+    $pageName = "Administration Panel";
+    require_once ("../components/headerLoggedInValues.php");
+    require_once ("../components/header.php");
 
-        $sqlLog = $conn->prepare("SELECT * FROM log ORDER BY ID DESC LIMIT 5");
-        $sqlLog->execute();
-        $resultLog = $sqlLog->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
+    require_once ("../../model/database/admin_sql_queries.php");
+    $lastAddedUsers = getLastAddedUsers();
+    $lastLogEntries = getLastFiveLogEntries();
 
-    $conn = null;
 
 
 ?>
@@ -31,8 +23,7 @@
         <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="deActUser()">Deactivate User</button>
         <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="actUser()">Activate User</button>
 
-        <form id="addUser" class="w3-margin-top w3-margin-bottom" style="display:none" method="post" action="">
-            <input type="hidden" name="page" value="addUser">
+        <form id="addUser" class="w3-margin-top w3-margin-bottom" style="display:none" method="post" action="../../controller/addUserController.php">
             <table style="width:80%">
                 <tr>
                     <td>
@@ -75,8 +66,7 @@
             </table>
         </form>
 
-        <form id="deActUser" class="w3-margin-top w3-margin-bottom" style="display:none" method="post" action="">
-            <input type="hidden" name="page" value="changeUserActive">
+        <form id="deActUser" class="w3-margin-top w3-margin-bottom" style="display:none" method="post" action="../../controller/changeUserActiveController.php">
             <input type="hidden" name="action" value="deactUser">
             <table style="width:30%">
                 <tr>
@@ -93,8 +83,7 @@
             </table>
         </form>
 
-        <form id="actUser" class="w3-margin-top w3-margin-bottom" style="display:none" method="post" action="">
-            <input type="hidden" name="page" value="changeUserActive">
+        <form id="actUser" class="w3-margin-top w3-margin-bottom" style="display:none" method="post" action="../../controller/changeUserActiveController.php">
             <input type="hidden" name="action" value="actUser">
             <table style="width:30%">
                 <tr>
@@ -115,15 +104,15 @@
         <div class="w3-responsive w3-card-4 w3-margin-top w3-margin-bottom" style="width:35%">
             <table class="w3-table w3-striped w3-bordered">
                 <?php
-                    if (isset($resultUsers[0])) {
+                    if (isset($lastAddedUsers[0])) {
                         echo "<tr>";
-                        foreach ($resultUsers[0] as $key => $value) {
+                        foreach ($lastAddedUsers[0] as $key => $value) {
                             echo "<th class=\"w3-theme\">" . $key . "</th>";
                         }
                         echo "</tr>";
-                        for($i = 0; $i < count($resultUsers); $i++) {
+                        for($i = 0; $i < count($lastAddedUsers); $i++) {
                             echo "<tr>";
-                            foreach ($resultUsers[$i] as $key => $value) {
+                            foreach ($lastAddedUsers[$i] as $key => $value) {
                                 echo "<td>" . $value . "</td>";
                             }
                             echo "</tr>";
@@ -138,15 +127,15 @@
         <div class="w3-responsive w3-card-4 w3-margin-top w3-margin-bottom" style="width:90%">
             <table class="w3-table w3-striped w3-bordered">
                 <?php
-                if (isset($resultLog[0])) {
+                if (isset($lastLogEntries[0])) {
                     echo "<tr>";
-                    foreach ($resultLog[0] as $key => $value) {
+                    foreach ($lastLogEntries[0] as $key => $value) {
                         echo "<th class=\"w3-theme\">" . $key . "</th>";
                     }
                     echo "</tr>";
-                    for($i = 0; $i < count($resultLog); $i++) {
+                    for($i = 0; $i < count($lastLogEntries); $i++) {
                         echo "<tr>";
-                        foreach ($resultLog[$i] as $key => $value) {
+                        foreach ($lastLogEntries[$i] as $key => $value) {
                             echo "<td>" . $value . "</td>";
                         }
                         echo "</tr>";
@@ -157,8 +146,7 @@
             </table>
         </div>
 
-        <form method="post">
-            <input type="hidden" name="page" value="adminPanelLog">
+        <form method="post" action="adminPanelLog.php">
             <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="View Full Log">
         </form>
     </div>
@@ -221,3 +209,7 @@
         }
     }
 </script>
+
+<?php
+    include_once ("../components/footer.php");
+?>

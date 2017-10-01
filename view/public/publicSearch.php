@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    $topHeading = "Vehicle Information Service";
+    $pageName = "Search Results";
+    require_once ("../components/headerNotLoggedInValues.php");
+    require_once ("../components/header.php");
+?>
+
 <div class="w3-margin-top w3-margin-bottom" align="center">
     <div class="w3-card-2 w3-padding-top" style="min-height:360px;width:80%">
 
@@ -19,3 +27,7 @@
         ?>
     </div>
 </div>
+
+<?php
+    include_once ("../components/footer.php");
+?>

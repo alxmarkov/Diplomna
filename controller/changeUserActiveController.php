@@ -2,7 +2,9 @@
 
     <div class="w3-card-2 w3-padding-top" style="min-height:360px;width:80%">
         <?php
+        session_start();
         $errorMessage = "";
+        require_once "../model/database/admin_sql_queries.php";
 
         if (!isset($_POST['Username'])) {
             echo "<p style='font-weight: 600'>Please enter a valid Username!</p>";
@@ -26,26 +28,8 @@
                 echo "<p style='font-weight: 600'>Invalid Action!</p>";
                 exit();
             }
-            $servername = "localhost";
-            $dbUsername = "root";
-            $dbName = "vis_database";
-            $nameOfAdmin = $_SESSION['username'];
-            $currentDate = date("Y-m-d h:i:sa");
-            $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUsername);
-            try {
-                $conn->beginTransaction();
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "UPDATE logins SET Active='$userActive' WHERE Username='$manipulatedUser'";
-                $conn->exec($sql);
-                echo "<p style='font-weight: 600'>User " . $manipulatedUser . " " . $resultMessage . "!<br></p>";
-                $sqlLog = "INSERT INTO log (DateTimes, Usernames, Actions, Records, Tables) VALUES ('$currentDate', '$nameOfAdmin' , '$logMessage', '$manipulatedUser', 'logins')";
-                $conn->exec($sqlLog);
-                $conn->commit();
-            } catch (PDOException $e) {
-                $conn->rollBack();
-                echo "Connection failed: " . $e->getMessage();
-            }
-            $conn = null;
+            changeUserActive($manipulatedUser, $userActive, $logMessage);
+            header("Location: ../view/admin/adminPanel.php");
         }
         ?>
         <form method="post" action="">

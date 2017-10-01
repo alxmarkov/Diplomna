@@ -1,19 +1,13 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $dbname = "vis_database";
+    session_start();
 
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sqlLog = $conn->prepare("SELECT * FROM log ORDER BY ID DESC LIMIT 10");
-        $sqlLog->execute();
-        $resultLog = $sqlLog->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
+    $topHeading = "Vehicle Information Service";
+    $pageName = "Administration Panel";
+    require_once ("../components/headerLoggedInValues.php");
+    require_once ("../components/header.php");
 
-    $conn = null;
+    require_once ("../../model/database/admin_sql_queries.php");
+    $lastLogEntries = getLogPage();
 ?>
 
 <div class="w3-margin-top w3-margin-bottom" align="center">
@@ -23,15 +17,15 @@
         <div class="w3-responsive w3-card-4 w3-margin-top w3-margin-bottom" style="width:90%">
             <table id="logTable" class="w3-table w3-striped w3-bordered">
                 <?php
-                if (isset($resultLog[0])) {
+                if (isset($lastLogEntries[0])) {
                     echo "<tr>";
-                    foreach ($resultLog[0] as $key => $value) {
+                    foreach ($lastLogEntries[0] as $key => $value) {
                         echo "<th class=\"w3-theme\">" . $key . "</th>";
                     }
                     echo "</tr>";
-                    for($i = 0; $i < count($resultLog); $i++) {
+                    for($i = 0; $i < count($lastLogEntries); $i++) {
                         echo "<tr>";
-                        foreach ($resultLog[$i] as $key => $value) {
+                        foreach ($lastLogEntries[$i] as $key => $value) {
                             echo "<td>" . $value . "</td>";
                         }
                         echo "</tr>";
@@ -44,13 +38,12 @@
         <div class="w3-responsive  w3-margin-top w3-margin-bottom" style="width:90%; display: inline-block">
             <button class='w3-btn w3-dark-grey w3-hover-light-grey' style="width: 100px; float: left" onclick="changePage('previous')">Previous</button>
             <button class='w3-btn w3-dark-grey w3-hover-light-grey' style="width: 100px; float: right" onclick="changePage('next')">Next</button>
-            <form method="post" action="">
-                <input type="hidden" name="page" value="adminPanel">
+            <form method="post" action="adminPanel.php">
                 <input class='w3-btn w3-dark-grey w3-hover-light-grey' type="submit" value="Go Back">
             </form>
         </div>
         <input type="hidden" id="logNumber" value="<?= 0?>">
-        <input type="hidden" id="maxLogNumber" value="<?= $resultLog[0]["ID"]?>">
+        <input type="hidden" id="maxLogNumber" value="<?= $lastLogEntries[0]["ID"]?>">
     </div>
 </div>
 
@@ -105,9 +98,12 @@
                     document.getElementById('logTable').innerHTML = tableContent;
                 }
             };
-            xmlhttp.open("GET", "./src/changeLogPage.php?logID="+logID);
+            xmlhttp.open("GET", "../../controller/changeLogPageController.php?logID="+logID);
             xmlhttp.send();
         }
     }
 
 </script>
+<?php
+    include_once ("../components/footer.php");
+?>

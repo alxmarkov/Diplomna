@@ -4,18 +4,7 @@
 
         <?php
 
-        //$password = "mypassword";
-        //$secondPassword = "titiegiggles";
-        //echo $password . "\n";
-        //$hash = password_hash($password, PASSWORD_DEFAULT);
-        //echo $hash . "\n";
-        //
-        //if (password_verify($secondPassword, $hash)) {
-        //    echo "The passwords match!\n";
-        //}
-        //else {
-        //    echo "The passwords don't match!\n";
-        //}
+        require_once "model/admin_sql_queries.php";
 
         $passErrorMessage = "";
         $roleErrorMessage = "";
@@ -68,28 +57,8 @@
         }
 
 
-//        echo $user . "<br>" . $pass . "<br>" .$confirmPass . "<br>" . $role . "<br>" . $roleErrorMessage . "<br>" . $passErrorMessage . "<br>" . "END";
-
         if ($passErrorMessage == "" && $roleErrorMessage == "") {
-            $serverName = "localhost";
-            $dbUsername = "root";
-            $dbName = "vis_database";
-            $nameOfAdmin = $_SESSION['username'];
-            $conn = new PDO("mysql:host=$serverName;dbname=$dbName", $dbUsername);
-            try {
-                $conn->beginTransaction();
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "INSERT INTO logins (Username, Password, Role, Active, DateAdded) VALUES ('$newUser', '$newPassHash', '$newRole', '$newActive', '$dateAdded')";
-                $conn->exec($sql);
-                echo "<p style='font-weight: 600'>New user " . $newUser . " added succesfully!<br></p>";
-                $sqlLog = "INSERT INTO log (DateTimes, Usernames, Actions, Records, Tables) VALUES ('$dateAdded', '$nameOfAdmin' , 'Added User', '$newUser', 'logins')";
-                $conn->exec($sqlLog);
-                $conn->commit();
-            } catch (PDOException $e) {
-                $conn->rollBack();
-                echo "Connection failed: " . $e->getMessage();
-            }
-            $conn = null;
+            addUser($newUser, $newPass, $newRole);
         }
         else {
             echo "<p style='font-weight: 600'>" . $passErrorMessage . $roleErrorMessage . "</p>";
