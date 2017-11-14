@@ -1,8 +1,12 @@
 <?php
 
+namespace model\classes;
+
 class Vehicle {
+    private $ID;
     private $VIN;
     private $NumberPlate;
+    private $Type;
     private $Make;
     private $Model;
     private $EngineType;
@@ -11,6 +15,22 @@ class Vehicle {
     private $Color;
     private $PicturePath;
     private $OwnerID;
+
+    /**
+     * @return mixed
+     */
+    public function getID()
+    {
+        return $this->ID;
+    }
+
+    /**
+     * @param mixed $ID
+     */
+    public function setID($ID)
+    {
+        $this->ID = $ID;
+    }
 
     /**
      * @return mixed
@@ -43,6 +63,23 @@ class Vehicle {
     {
         $this->NumberPlate = $NumberPlate;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->Type;
+    }
+
+    /**
+     * @param mixed $Type
+     */
+    public function setType($Type)
+    {
+        $this->Type = $Type;
+    }
+
 
     /**
      * @return mixed

@@ -1,7 +1,10 @@
 <?php
 
+namespace model\classes;
+
 class Owner {
     private $ID;
+    private $EGN;
     private $City;
     private $Name;
     private $FamilyName;
@@ -21,6 +24,22 @@ class Owner {
     public function setID($ID)
     {
         $this->ID = $ID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEGN()
+    {
+        return $this->EGN;
+    }
+
+    /**
+     * @param mixed $EGN
+     */
+    public function setEGN($EGN)
+    {
+        $this->EGN = $EGN;
     }
 
     /**

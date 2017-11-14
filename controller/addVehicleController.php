@@ -3,35 +3,36 @@
     <div class="w3-card-2 w3-padding-top" style="min-height:360px;width:80%">
 
         <?php
+        use model\classes\Vehicle;
+
+        use model\database\VehicleDao;
+        use model\database\OwnerDao;
+        function __autoload($className) {
+            $className = str_replace("\\", "/", $className);
+            require_once "../" . $className . '.php';
+        }
         session_start();
-        require_once "../model/classes/Vehicle.php";
-        require_once "../model/classes/Owner.php";
-        require_once "../model/database/vehicles_sql_queries.php";
 
         $errorMessage = "";
 
 
-        if(isset($_POST['vin']) && isset($_POST['numberplate']) && isset($_POST['make']) && isset($_POST['model']) && isset($_POST['engineSize']) && isset($_POST['year']) && isset($_POST['color']) && isset($_POST['ownerID'])  && isset($_POST['ownerCity']) && isset($_POST['ownerName']) && isset($_POST['ownerFName']) && isset($_POST['ownerAddress'])) {
+        if(isset($_POST['vin']) && isset($_POST['numberplate']) && isset($_POST['type']) && isset($_POST['make']) && isset($_POST['model']) && isset($_POST['engineSize']) && isset($_POST['year']) && isset($_POST['color']) && isset($_POST['ownerID'])) {
             $newVehicle = new Vehicle();
             $newVehicle->setVIN(htmlspecialchars(strtoupper($_POST['vin'])));
             $newVehicle->setNumberPlate(htmlspecialchars(strtoupper($_POST['numberplate'])));
+            $newVehicle->setType(htmlspecialchars(ucfirst($_POST['type'])));
             $newVehicle->setMake(htmlspecialchars(ucfirst($_POST['make'])));
             $newVehicle->setModel(htmlspecialchars(ucfirst($_POST['model'])));
             $newVehicle->setEngineType(htmlspecialchars(ucfirst($_POST['engineType'])));
             $newVehicle->setEngineSize(htmlspecialchars($_POST['engineSize']));
             $newVehicle->setYearOfMfg(htmlspecialchars($_POST['year']));
             $newVehicle->setColor(htmlspecialchars(ucfirst($_POST['color'])));
-            $newVehicle->setOwnerID(htmlspecialchars($_POST['ownerID']));
+            $ownerDao = OwnerDao::getInstance();
+            $ownerId = $ownerDao->getIdByEGN(htmlspecialchars($_POST['ownerID']));
+            $newVehicle->setOwnerID($ownerId);
 
-            $newOwner = new Owner();
-            $newOwner->setID(htmlspecialchars($_POST['ownerID']));
-            $newOwner->setCity(htmlspecialchars(ucfirst($_POST['ownerCity'])));
-            $newOwner->setName(htmlspecialchars(ucfirst($_POST['ownerName'])));
-            $newOwner->setFamilyName(htmlspecialchars(ucfirst($_POST['ownerFName'])));
-            $newOwner->setAddress(htmlspecialchars(ucwords($_POST['ownerAddress'])));
 
             $dateAdded = date("Y-m-d h:i:sa");
-            $nameOfManager = $_SESSION['username'];
 
             $tmpFileName = $_FILES['picture']['tmp_name'];
             if (is_uploaded_file($tmpFileName)) {
@@ -52,11 +53,14 @@
         }
 
         if ($errorMessage == "") {
-            if(!addOwner($newOwner) || !addVehicle($newVehicle)) {
-                if (file_exists($filePath)) {
-                    unlink($filePath);
-                    rmdir("uploads/$newVehicle[0]/vehicle");
-                    rmdir("uploads/$newVehicle[0]");
+            $vehicleDao = VehicleDao::getInstance();
+            $addSuccess = $vehicleDao->addVehicle($newVehicle);
+            if(!$addSuccess) {
+                if (file_exists("../" . $filePath)) {
+                    unlink("../" . $filePath);
+                    $vin = $newVehicle->getVIN();
+                    rmdir("../uploads/$vin/vehicle");
+                    rmdir("../uploads/$vin");
                 }
             }
         }

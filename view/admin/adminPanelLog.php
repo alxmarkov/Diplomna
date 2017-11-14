@@ -1,13 +1,17 @@
 <?php
+    use model\database\AdminDao;
+    function __autoload($className) {
+        $className = str_replace("\\", "/", $className);
+        require_once "../../" . $className . '.php';
+    }
     session_start();
 
     $topHeading = "Vehicle Information Service";
     $pageName = "Administration Panel";
     require_once ("../components/headerLoggedInValues.php");
     require_once ("../components/header.php");
-
-    require_once ("../../model/database/admin_sql_queries.php");
-    $lastLogEntries = getLogPage();
+    $adminDao = AdminDao::getInstance();
+    $lastLogEntries = $adminDao->getLogPage();
 ?>
 
 <div class="w3-margin-top w3-margin-bottom" align="center">

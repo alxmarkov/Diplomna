@@ -1,6 +1,9 @@
 <?php
+    function __autoload($className) {
+        $className = str_replace("\\", "/", $className);
+        require_once "../../" . $className . '.php';
+    }
     session_start();
-
     $topHeading = "Vehicle Information Service";
     $pageName = "Vehicle Management Panel";
     require_once ("../components/headerLoggedInValues.php");
@@ -20,6 +23,18 @@
                 <h4>Vehicle Information Section:</h4>
                 <p>Please enter the vehicle Number Plate in the format "XnnnnXX" or "XXnnnnXX" where "X" are latin letters and "n" are arabic numbers.</p>
                 <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
+                    <div style="width: 100%; margin: 0; padding: 2px">
+                        <label class="w3-label">Vehicle Type: </label>
+                        <select class="w3-select" name="type" required style="width: 80%">
+                            <option value="Automobile">Automobile</option>
+                            <option value="Motorcycle">Motorcycle</option>
+                            <option value="Moped">Moped</option>
+                            <option value="Van">Van</option>
+                            <option value="Truck">Truck</option>
+                            <option value="Trailer">Trailer</option>
+                            <option value="Bus">Bus</option>
+                        </select>
+                    </div>
                     <div style="width: 50%; float: left; margin: 0; padding: 2px">
                         <input class="w3-input w3-center" name="vin" type="text" required style="text-transform:uppercase;width: 100%" maxlength="20">
                         <label class="w3-label w3-validate">Vehicle Identification Number</label>
@@ -28,6 +43,7 @@
                         <input class="w3-input w3-center" name="numberplate" type="text" required style="text-transform:uppercase;width:100%" maxlength="8">
                         <label class="w3-label w3-validate">Number Plate</label>
                     </div>
+
                     <div style="width: 50%; float: left; margin: 0; padding: 2px">
                         <input class="w3-input w3-center" name="make" type="text" required style="width:100%" maxlength="50">
                         <label class="w3-label w3-validate">Make</label>
@@ -42,6 +58,7 @@
                             <option value="Petrol">Petrol</option>
                             <option value="Diesel">Diesel</option>
                             <option value="Electric">Electric</option>
+                            <option value="Hybrid">Hybrid</option>
                         </select>
                     </div>
                     <div style="width: 50%; float: right; margin: 0; padding: 2px">
@@ -58,11 +75,17 @@
                     </div>
                     <div class="w3-margin" style="clear: both">
                         <label class="w3-label">Picture of vehicle: </label>
-                        <input type="file" name="picture" required style="width: 50%">
+                        <input type="file" name="picture" required style="width: 50%" accept="image/*">
+                    </div>
+                    <div style="width: 100%; float: left; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="ownerID" type="text" required style="width:100%" maxlength="10">
+                        <label class="w3-label w3-validate">Owner EGN / EIK</label>
                     </div>
                 </div>
             </div>
-
+            <input class="w3-btn w3-dark-grey w3-hover-light-grey w3-margin" type="submit" value="Add">
+        </form>
+        <form id="addOwner" style="display:none" method="post" action="../../controller/addOwnerController.php">
             <div class="w3-responsive w3-card-4 w3-margin">
                 <h4>Owner Information Section.</h4>
                 <p>Please enter the owners EGN / EIK with 10 arabic numbers.</p>

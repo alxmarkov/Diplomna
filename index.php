@@ -1,8 +1,13 @@
 <?php
+function __autoload($className) {
+    $className = str_replace("\\", "/", $className);
+    require_once $className . '.php';
+}
 session_start();
 $page = "";
-if (isset($_SESSION["role"])) {
-    switch ($_SESSION["role"]) {
+if (isset($_SESSION["user"])) {
+    $user = $_SESSION["user"];
+    switch ($user->getRole()) {
         case "11": {
             $page = "view/admin/adminPanel.php";
             break;

@@ -2,9 +2,14 @@
 
     <div class="w3-card-2 w3-padding-top" style="min-height:360px;width:80%">
         <?php
+        use model\database\UserDao;
+        use model\classes\User;
+        function __autoload($className) {
+            $className = str_replace("\\", "/", $className);
+            require_once "../" . $className . '.php';
+        }
         session_start();
         $errorMessage = "";
-        require_once "../model/database/admin_sql_queries.php";
 
         if (!isset($_POST['Username'])) {
             echo "<p style='font-weight: 600'>Please enter a valid Username!</p>";
@@ -28,7 +33,8 @@
                 echo "<p style='font-weight: 600'>Invalid Action!</p>";
                 exit();
             }
-            changeUserActive($manipulatedUser, $userActive, $logMessage);
+            $userDao = UserDao::getInstance();
+            $userDao->changeUserActive($manipulatedUser, $userActive, $logMessage);
             header("Location: ../view/admin/adminPanel.php");
         }
         ?>

@@ -4,7 +4,12 @@
 
         <?php
 
-        require_once "model/admin_sql_queries.php";
+        use model\database\UserDao;
+        use model\classes\User;
+        function __autoload($className) {
+            $className = str_replace("\\", "/", $className);
+            require_once "../" . $className . '.php';
+        }
 
         $passErrorMessage = "";
         $roleErrorMessage = "";
@@ -58,7 +63,9 @@
 
 
         if ($passErrorMessage == "" && $roleErrorMessage == "") {
-            addUser($newUser, $newPass, $newRole);
+            $userDao = UserDao::getInstance();
+            $user = new User(null, $newUser, $newPass, $newRole, null, null);
+            $userDao->addUser($user);
         }
         else {
             echo "<p style='font-weight: 600'>" . $passErrorMessage . $roleErrorMessage . "</p>";

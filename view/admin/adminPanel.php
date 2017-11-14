@@ -1,18 +1,20 @@
 <?php
-
+    use model\database\AdminDao;
+    use model\database\UserDao;
+    function __autoload($className) {
+        $className = str_replace("\\", "/", $className);
+        require_once "../../" . $className . '.php';
+    }
     session_start();
 
     $topHeading = "Vehicle Information Service";
     $pageName = "Administration Panel";
     require_once ("../components/headerLoggedInValues.php");
     require_once ("../components/header.php");
-
-    require_once ("../../model/database/admin_sql_queries.php");
-    $lastAddedUsers = getLastAddedUsers();
-    $lastLogEntries = getLastFiveLogEntries();
-
-
-
+    $adminDao = AdminDao::getInstance();
+    $userDao = UserDao::getInstance();
+    $lastAddedUsers = $userDao->getLastAddedUsers();
+    $lastLogEntries = $adminDao->getLastFiveLogEntries();
 ?>
 
 <div class="w3-margin-top w3-margin-bottom" align="center">
