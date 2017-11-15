@@ -14,11 +14,20 @@
 
     <div class="w3-card-2 w3-padding-top w3-margin" style="min-height:360px;width:80%">
         <h4>Select action from the buttons below:</h4>
-        <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="button" id="addVehButton" value="Add Vehicle">
-        <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="button" id="editVehButton" value="Edit Vehicle">
-        <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="button" id="delVehButton" value="Delete Vehicle">
+        <div style="width: 100%">
+            <h5>Vehicles Operations:</h5>
+            <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="showAddVehicle()">Add Vehicle</button>
+            <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="showEditVehicle()">Edit Vehicle</button>
+            <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="showDeleteVehicle()">Delete Vehicle</button>
+        </div>
+        <div style="width: 100%">
+            <h5>Owners Operations:</h5>
+            <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="showAddOwner()">Add Owner</button>
+            <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="showEditOwner()">Edit Owner</button>
+            <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="showDeleteOwner()">Delete Owner</button>
+        </div>
         <br>
-        <form id="at" style="display:none" method="post" enctype="multipart/form-data" action="../../controller/addVehicleController.php">
+        <form id="addVehicle" style="display:none" method="post" enctype="multipart/form-data" action="../../controller/addVehicleController.php">
             <div class="w3-responsive w3-card-4 w3-margin">
                 <h4>Vehicle Information Section:</h4>
                 <p>Please enter the vehicle Number Plate in the format "XnnnnXX" or "XXnnnnXX" where "X" are latin letters and "n" are arabic numbers.</p>
@@ -77,13 +86,14 @@
                         <label class="w3-label">Picture of vehicle: </label>
                         <input type="file" name="picture" required style="width: 50%" accept="image/*">
                     </div>
-                    <div style="width: 100%; float: left; margin: 0; padding: 2px">
-                        <input class="w3-input w3-center" name="ownerID" type="text" required style="width:100%" maxlength="10">
+                    <div style="width: 100%; float: left; margin: 0; padding: 2px; position: relative">
+                        <input class="w3-input w3-center" name="ownerID" id="search-addVeh" type="text" required style="width:100%" maxlength="10" onkeyup="getSuggestions('egn', 'addVeh')" autocomplete="off">
                         <label class="w3-label w3-validate">Owner EGN / EIK</label>
+                        <div id="suggest-addVeh" class="search-autocomplete" style="display: none"></div>
                     </div>
+                    <input class="w3-btn w3-dark-grey w3-hover-light-grey w3-margin" type="submit" value="Add">
                 </div>
             </div>
-            <input class="w3-btn w3-dark-grey w3-hover-light-grey w3-margin" type="submit" value="Add">
         </form>
         <form id="addOwner" style="display:none" method="post" action="../../controller/addOwnerController.php">
             <div class="w3-responsive w3-card-4 w3-margin">
@@ -110,17 +120,17 @@
                         <input class="w3-input w3-center" name="ownerAddress" type="text" required style="width:100%">
                         <label class="w3-label w3-validate">Address</label>
                     </div>
+                    <input class="w3-btn w3-dark-grey w3-hover-light-grey w3-margin" type="submit" value="Add">
                 </div>
             </div>
-            <input class="w3-btn w3-dark-grey w3-hover-light-grey w3-margin" type="submit" value="Add">
         </form>
 
-        <form id="et" style="display:none" method="post" action="vehmgmtedit.jsp">
+        <form id="editVehicle" style="display:none" method="post" action="">
             <div class="w3-responsive w3-card-4 w3-margin">
                 <h4>Please enter the vehicle Number Plate to edit it's record:</h4>
                 <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
                     <div style="width: 50%; margin: 10px auto; padding: 2px">
-                        <input class="w3-input w3-center" name="numberplate" type="text" required style="text-transform:uppercase;width:100%" maxlength="8">
+                        <input class="w3-input w3-center" name="numberplateEdit" type="text" required style="text-transform:uppercase;width:100%" maxlength="8">
                         <label class="w3-label w3-validate">Number Plate</label>
                     </div>
                     <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Edit">
@@ -128,12 +138,26 @@
             </div>
         </form>
 
-        <form id="dt" style="display:none" method="post" action="${pageContext.request.contextPath}/delVehServlet">
+        <form id="editOwner" style="display:none" method="post" action="">
+            <div class="w3-responsive w3-card-4 w3-margin">
+                <h4>Please enter the owners EGN or EIK to edit his record:</h4>
+                <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
+                    <div style="width: 50%; margin: 10px auto; padding: 2px; position: relative">
+                        <input class="w3-input w3-center" name="egnEdit" id="search-editOwner" type="text" required style="text-transform:uppercase;width:100%" maxlength="10" onkeyup="getSuggestions('egn', 'editOwner')" autocomplete="off">
+                        <label class="w3-label w3-validate">EGN / EIK</label>
+                        <div id="suggest-editOwner" class="search-autocomplete" style="display: none"></div>
+                    </div>
+                    <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Edit">
+                </div>
+            </div>
+        </form>
+
+        <form id="deleteVehicle" style="display:none" method="post" action="">
             <div class="w3-responsive w3-card-4 w3-margin">
                 <h4>Please enter the vehicle Number Plate to delete it's record:</h4>
                 <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
                     <div style="width: 50%; margin: 10px auto; padding: 2px">
-                        <input class="w3-input w3-center" name="numberplate" type="text" required style="text-transform:uppercase;width:100%" maxlength="8">
+                        <input class="w3-input w3-center" name="numberplateDelete" type="text" required style="text-transform:uppercase;width:100%" maxlength="8">
                         <label class="w3-label w3-validate">Number Plate</label>
                     </div>
                     <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Delete">
@@ -141,83 +165,22 @@
             </div>
         </form>
 
+        <form id="deleteOwner" style="display:none" method="post" action="">
+            <div class="w3-responsive w3-card-4 w3-margin">
+                <h4>Please enter the owners EGN or EIK to delete his record:</h4>
+                <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
+                    <div style="width: 50%; margin: 10px auto; padding: 2px; position: relative">
+                        <input class="w3-input w3-center" name="egnDelete" id="search-delOwner" type="text" required style="text-transform:uppercase;width:100%" maxlength="10" onkeyup="getSuggestions('egn', 'delOwner')" autocomplete="off">
+                        <label class="w3-label w3-validate">EGN / EIK</label>
+                        <div id="suggest-delOwner" class="search-autocomplete" style="display: none"></div>
+                    </div>
+                    <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Delete">
+                </div>
+            </div>
+        </form>
     </div>
 </div>
-
-<script type="text/javascript">
-    var button = document.getElementById('addVehButton'); // Assumes element with id='button'
-
-    button.onclick = function() {
-        var at = document.getElementById('at');
-        var dt = document.getElementById('dt');
-        var et = document.getElementById('et');
-        if (at.style.display !== 'none') {
-            at.style.display = 'none';
-        }
-        else {
-            if (dt.style.display !== 'none' || et.style.display !== 'none'){
-                at.style.display = 'block';
-                dt.style.display = 'none';
-                et.style.display = 'none';
-            }
-            else {
-                at.style.display = 'block';
-            }
-        }
-    };
-
-</script>
-
-<script type="text/javascript">
-    var button = document.getElementById('delVehButton'); // Assumes element with id='button'
-
-    button.onclick = function() {
-        var dt = document.getElementById('dt');
-        var at = document.getElementById('at');
-        var et = document.getElementById('et');
-        if (dt.style.display !== 'none') {
-            dt.style.display = 'none';
-        }
-        else {
-            if (at.style.display !== 'none' || et.style.display !== 'none') {
-                dt.style.display = 'block';
-                at.style.display = 'none';
-                et.style.display = 'none';
-            }
-            else {
-                dt.style.display = 'block';
-            }
-
-        }
-    };
-
-</script>
-
-<script type="text/javascript">
-    var button = document.getElementById('editVehButton'); // Assumes element with id='button'
-
-    button.onclick = function() {
-        var dt = document.getElementById('dt');
-        var at = document.getElementById('at');
-        var et = document.getElementById('et');
-        if (et.style.display !== 'none') {
-            et.style.display = 'none';
-        }
-        else {
-            if (at.style.display !== 'none' || dt.style.display !== 'none') {
-                et.style.display = 'block';
-                at.style.display = 'none';
-                dt.style.display = 'none';
-            }
-            else {
-                et.style.display = 'block';
-            }
-
-        }
-    };
-
-</script>
-
+    <script src="../../assets/js/vehMgmt.js"></script>
 <?php
     include_once ("../components/footer.php");
 ?>

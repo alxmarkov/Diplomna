@@ -21,6 +21,11 @@ class VehicleDao
                           VALUES 
                           (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+    const GET_NUMBERPLATE_SUGGESTIONS = "SELECT
+                                 Numberplate
+                                 FROM vehicles
+                                 WHERE Numberplate LIKE ?";
+
     private function __construct()
     {
         $this->pdo = DBManager::getInstance()->dbConnect();
@@ -55,5 +60,12 @@ class VehicleDao
             }
             return $e->getMessage();
         }
+    }
+
+    function getNumberplateSuggestions ($partOfNP) {
+        $statement = $this->pdo->prepare( self::GET_NUMBERPLATE_SUGGESTIONS);
+        $statement->execute(array("$partOfNP%"));
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 }

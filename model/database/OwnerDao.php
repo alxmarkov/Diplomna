@@ -26,6 +26,10 @@ class OwnerDao
                             FROM owners
                             WHERE EGN = ?";
 
+    const GET_EGN_SUGGESTIONS = "SELECT
+                                 EGN
+                                 FROM owners
+                                 WHERE EGN LIKE ?";
 
     private function __construct()
     {
@@ -68,5 +72,11 @@ class OwnerDao
         $statement->execute(array($egn));
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result['ID'];
+    }
+    function getEgnSuggestions ($partOfEGN) {
+        $statement = $this->pdo->prepare( self::GET_EGN_SUGGESTIONS);
+        $statement->execute(array("$partOfEGN%"));
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 }
