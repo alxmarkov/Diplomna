@@ -100,13 +100,25 @@ function getSuggestions(type, divName) {
                     if (response.suggestions.length !== 0) {
                         autocompleteDiv.innerHTML = '';
                         autocompleteDiv.style.display = 'block';
+                        if (response.suggestions[0].EGN != null) {
+                            property = "EGN";
+                        }
+                        else  {
+                            property = "Numberplate";
+                        }
                         response.suggestions.forEach(function (suggestion) {
-                            var egn = suggestion.EGN;
+                            var value = "";
+                            if (suggestion.EGN != null) {
+                                value = suggestion.EGN;
+                            }
+                            else {
+                                value = suggestion.Numberplate;
+                            }
                             var p = document.createElement('p');
                             p.style.display = 'block';
-                            p.innerHTML = egn;
+                            p.innerHTML = value;
                             p.onclick = function() {
-                                document.getElementById('search-' + divName).value = egn;
+                                document.getElementById('search-' + divName).value = value;
                                 document.getElementById('suggest-' + divName).style.display = "none";
                             };
                             autocompleteDiv.appendChild(p);
@@ -117,11 +129,20 @@ function getSuggestions(type, divName) {
                         autocompleteDiv.style.display = 'block';
                         var p = document.createElement('p');
                         p.style.display = 'block';
-                        p.innerHTML = "No owner with such an EGN / EIK found. Please add from Add Owner.";
-                        p.onclick = function() {
-                            showAddOwner();
-                            document.getElementById('suggest-' + divName).style.display = "none";
-                        };
+                        if (type === 'egn') {
+                            p.innerHTML = "No owner with such an EGN / EIK found. Please add from Add Owner.";
+                            p.onclick = function() {
+                                showAddOwner();
+                                document.getElementById('suggest-' + divName).style.display = "none";
+                            };
+                        }
+                        else  {
+                            p.innerHTML = "No vehicle with such an Number Plate found. Please add from Add Vehicle";
+                            p.onclick = function() {
+                                showAddVehicle();
+                                document.getElementById('suggest-' + divName).style.display = "none";
+                            };
+                        }
                         autocompleteDiv.appendChild(p);
                     }
                 }

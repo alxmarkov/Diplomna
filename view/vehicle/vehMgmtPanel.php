@@ -129,9 +129,10 @@
             <div class="w3-responsive w3-card-4 w3-margin">
                 <h4>Please enter the vehicle Number Plate to edit it's record:</h4>
                 <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
-                    <div style="width: 50%; margin: 10px auto; padding: 2px">
-                        <input class="w3-input w3-center" name="numberplateEdit" type="text" required style="text-transform:uppercase;width:100%" maxlength="8">
+                    <div style="width: 50%; margin: 10px auto; padding: 2px; position: relative">
+                        <input class="w3-input w3-center" name="numberplateEdit" id="search-editVeh" type="text" required style="text-transform:uppercase;width:100%" maxlength="8" onkeyup="getSuggestions('np', 'editVeh')" autocomplete="off">
                         <label class="w3-label w3-validate">Number Plate</label>
+                        <div id="suggest-editVeh" class="search-autocomplete" style="display: none"></div>
                     </div>
                     <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Edit">
                 </div>
@@ -156,9 +157,10 @@
             <div class="w3-responsive w3-card-4 w3-margin">
                 <h4>Please enter the vehicle Number Plate to delete it's record:</h4>
                 <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
-                    <div style="width: 50%; margin: 10px auto; padding: 2px">
-                        <input class="w3-input w3-center" name="numberplateDelete" type="text" required style="text-transform:uppercase;width:100%" maxlength="8">
+                    <div style="width: 50%; margin: 10px auto; padding: 2px; position: relative">
+                        <input class="w3-input w3-center" name="numberplateDelete" id="search-delVeh" type="text" required style="text-transform:uppercase;width:100%" maxlength="8" onkeyup="getSuggestions('np', 'delVeh')" autocomplete="off">
                         <label class="w3-label w3-validate">Number Plate</label>
+                        <div id="suggest-delVeh" class="search-autocomplete" style="display: none"></div>
                     </div>
                     <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Delete">
                 </div>

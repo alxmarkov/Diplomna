@@ -2,12 +2,16 @@
     position: absolute;
     top: 41px;
     width: 100%;
-    background-color: #dbd9da;
+    background-color: #f4f2f3;
     z-index: 100;
-    border: solid #1ae4ff 1px;
+    border: solid 	#009788 1px;
 }
 .search-autocomplete p {
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
+    color: #828c8a;
+}
+.search-autocomplete p:hover {
+    color: black;
 }
