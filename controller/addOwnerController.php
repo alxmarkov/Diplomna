@@ -10,7 +10,16 @@
 
     $errorMessage = "";
 
-    if (isset($_POST['ownerID']) && isset($_POST['ownerCity']) && isset($_POST['ownerName']) && isset($_POST['ownerFName']) && isset($_POST['ownerAddress'])) {
+    if (isset($_POST['ownerID']) &&
+        isset($_POST['ownerCity']) &&
+        isset($_POST['ownerName']) &&
+        isset($_POST['ownerFName']) &&
+        isset($_POST['ownerAddress']) &&
+        trim($_POST['ownerID']) != "" &&
+        trim($_POST['ownerCity']) != "" &&
+        trim($_POST['ownerName']) != "" &&
+        trim($_POST['ownerFName']) != "" &&
+        trim($_POST['ownerAddress']) != "") {
         $newOwner = new Owner();
         $newOwner->setEGN(htmlspecialchars($_POST['ownerID']));
         $newOwner->setCity(htmlspecialchars(ucfirst($_POST['ownerCity'])));
@@ -25,10 +34,13 @@
     if ($errorMessage == "") {
         $ownerDao = OwnerDao::getInstance();
         $addSuccess = $ownerDao->addOwner($newOwner);
-        if(!$addSuccess) {
-
+        if($addSuccess) {
+            echo json_encode(["Result" => "New owner successfully added!"]);
+        }
+        else {
+            echo json_encode(["Result" => "An error occured, please try again later."]);
         }
     }
     else {
-        echo "<p style='font-weight: 600'>" . $errorMessage . "</p>";
+        echo json_encode(["Result" => $errorMessage]);
     }

@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3-theme-teal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/styles/custom.css">
+    <link rel="stylesheet" href="../../assets/styles/sweetalert2.css" type="text/css">
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous">
+    </script>
+    <script src="../../assets/js/sweetalert2.js"></script>
 </head>
 
 <body>

@@ -4,6 +4,7 @@ var editVehicle = document.getElementById('editVehicle');
 var addOwner = document.getElementById('addOwner');
 var delOwner = document.getElementById('deleteOwner');
 var editOwner = document.getElementById('editOwner');
+var editOwnerSection = document.getElementById('editOwnerSection');
 
 function showAddVehicle() {
     if (addVehicle.style.display !== 'none') {
@@ -16,6 +17,7 @@ function showAddVehicle() {
         addOwner.style.display = 'none';
         editOwner.style.display = 'none';
         delOwner.style.display = 'none';
+        editOwnerSection.style.display = 'none';
     }
 }
 
@@ -30,6 +32,7 @@ function showDeleteVehicle() {
         addOwner.style.display = 'none';
         editOwner.style.display = 'none';
         delOwner.style.display = 'none';
+        editOwnerSection.style.display = 'none';
     }
 }
 
@@ -44,6 +47,7 @@ function showEditVehicle() {
         addOwner.style.display = 'none';
         editOwner.style.display = 'none';
         delOwner.style.display = 'none';
+        editOwnerSection.style.display = 'none';
     }
 }
 function showAddOwner() {
@@ -57,6 +61,7 @@ function showAddOwner() {
         editVehicle.style.display = 'none';
         editOwner.style.display = 'none';
         delOwner.style.display = 'none';
+        editOwnerSection.style.display = 'none';
     }
 }
 
@@ -71,6 +76,7 @@ function showEditOwner() {
         editVehicle.style.display = 'none';
         addOwner.style.display = 'none';
         delOwner.style.display = 'none';
+        editOwnerSection.style.display = 'none';
     }
 }
 
@@ -85,6 +91,21 @@ function showDeleteOwner() {
         editVehicle.style.display = 'none';
         addOwner.style.display = 'none';
         editOwner.style.display = 'none';
+        editOwnerSection.style.display = 'none';
+    }
+}
+function showEditOwnerSection() {
+    if (editOwnerSection.style.display !== 'none') {
+        editOwnerSection.style.display = 'none';
+    }
+    else {
+        editOwnerSection.style.display = 'block';
+        addVehicle.style.display = 'none';
+        delVehicle.style.display = 'none';
+        editVehicle.style.display = 'none';
+        addOwner.style.display = 'none';
+        editOwner.style.display = 'none';
+        delOwner.style.display = 'none';
     }
 }
 
@@ -152,4 +173,79 @@ function getSuggestions(type, divName) {
         request.send();
     }
     autocompleteDiv.style.display = 'none';
+}
+
+function deleteVehicle() {
+    swal({
+            title: 'Are you sure you want to delete this vehicle?',
+            text: "You will not be able to recover this vehicle!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#009788',
+        confirmButtonText: 'Yes, delete it!'
+    }).then(function () {
+
+    });
+}
+
+function createOwner() {
+    var ownerId = document.getElementById("addOwnerID").value;
+    var ownerCity = document.getElementById("ownerCity").value;
+    var ownerName = document.getElementById("ownerName").value;
+    var ownerFname = document.getElementById("ownerFName").value;
+    var ownerAddress = document.getElementById("ownerAddress").value;
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var response = JSON.parse(this.responseText);
+            swal({
+                text: response.Result,
+                type: "info",
+                confirmButtonColor: "#009788"
+            });
+            if (response.Result === "New owner successfully added!") {
+                showAddOwner();
+                document.getElementById("addOwnerID").value = "";
+                document.getElementById("ownerCity").value = "";
+                document.getElementById("ownerName").value = "";
+                document.getElementById("ownerFName").value = "";
+                document.getElementById("ownerAddress").value = "";
+            }
+        }
+    };
+    request.open('POST', '../../controller/addOwnerController.php');
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send("ownerID=" + ownerId + "&ownerCity=" + ownerCity + "&ownerName=" + ownerName + "&ownerFName=" + ownerFname +"&ownerAddress=" + ownerAddress);
+}
+function fetchOwner() {
+    var egn = document.getElementById('search-editOwner').value;
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var response = JSON.parse(this.responseText);
+            if (response.Error != null) {
+                swal({
+                    text: response.Error,
+                    type: "info",
+                    confirmButtonColor: "#009788"
+                });
+            }
+            else {
+                document.getElementById("editOwnerID").value = response.EGN;
+                document.getElementById("editOwnerCity").value = response.City;
+                document.getElementById("editOwnerName").value = response.FirstName;
+                document.getElementById("editOwnerFName").value = response.FamilyName;
+                document.getElementById("editOwnerAddress").value = response.Address;
+                showEditOwnerSection();
+            }
+        }
+    };
+    request.open('GET', '../../controller/editOwnerController.php?egn=' + egn);
+    request.send();
+}
+
+function updateOwner() {
+    alert("It Works!");
+    showEditOwnerSection();
 }

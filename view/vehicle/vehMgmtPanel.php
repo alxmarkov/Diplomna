@@ -95,35 +95,35 @@
                 </div>
             </div>
         </form>
-        <form id="addOwner" style="display:none" method="post" action="../../controller/addOwnerController.php">
+        <div id="addOwner" style="display:none">
             <div class="w3-responsive w3-card-4 w3-margin">
                 <h4>Owner Information Section.</h4>
                 <p>Please enter the owners EGN / EIK with 10 arabic numbers.</p>
                 <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
                     <div style="width: 50%; float: left; margin: 0; padding: 2px">
-                        <input class="w3-input w3-center" name="ownerID" type="text" required style="width:100%" maxlength="10">
+                        <input class="w3-input w3-center" id="addOwnerID" type="text" required style="width:100%" maxlength="10">
                         <label class="w3-label w3-validate">EGN / EIK</label>
                     </div>
                     <div style="width: 50%; float: right; margin: 0; padding: 2px">
-                        <input class="w3-input w3-center" name="ownerCity" type="text" required style="width:100%" maxlength="50">
+                        <input class="w3-input w3-center" id="ownerCity" type="text" required style="width:100%" maxlength="50">
                         <label class="w3-label w3-validate">City</label>
                     </div>
                     <div style="width: 50%; float: left; margin: 0; padding: 2px">
-                        <input class="w3-input w3-center" name="ownerName" type="text" required style="width:100%" maxlength="50">
+                        <input class="w3-input w3-center" id="ownerName" type="text" required style="width:100%" maxlength="50">
                         <label class="w3-label w3-validate">First Name</label>
                     </div>
                     <div style="width: 50%; float: right; margin: 0; padding: 2px">
-                        <input class="w3-input w3-center" name="ownerFName" type="text" required style="width:100%" maxlength="50">
+                        <input class="w3-input w3-center" id="ownerFName" type="text" required style="width:100%" maxlength="50">
                         <label class="w3-label w3-validate">Family Name</label>
                     </div>
                     <div class="w3-margin" style="clear: both">
-                        <input class="w3-input w3-center" name="ownerAddress" type="text" required style="width:100%">
+                        <input class="w3-input w3-center" id="ownerAddress" type="text" required style="width:100%">
                         <label class="w3-label w3-validate">Address</label>
                     </div>
-                    <input class="w3-btn w3-dark-grey w3-hover-light-grey w3-margin" type="submit" value="Add">
+                    <button class="w3-btn w3-dark-grey w3-hover-light-grey w3-margin" onclick="createOwner()">Add</button>
                 </div>
             </div>
-        </form>
+        </div>
 
         <form id="editVehicle" style="display:none" method="post" action="">
             <div class="w3-responsive w3-card-4 w3-margin">
@@ -139,7 +139,7 @@
             </div>
         </form>
 
-        <form id="editOwner" style="display:none" method="post" action="">
+        <div id="editOwner" style="display:none">
             <div class="w3-responsive w3-card-4 w3-margin">
                 <h4>Please enter the owners EGN or EIK to edit his record:</h4>
                 <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
@@ -148,12 +148,41 @@
                         <label class="w3-label w3-validate">EGN / EIK</label>
                         <div id="suggest-editOwner" class="search-autocomplete" style="display: none"></div>
                     </div>
-                    <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Edit">
+                    <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="fetchOwner()">Edit</button>
                 </div>
             </div>
-        </form>
+        </div>
 
-        <form id="deleteVehicle" style="display:none" method="post" action="">
+        <div id="editOwnerSection" style="display:none">
+            <div class="w3-responsive w3-card-4 w3-margin">
+                <h4>Edit Owner Information:</h4>
+                <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
+                    <div style="width: 50%; float: left; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" id="editOwnerID" type="text" required style="width:100%" maxlength="10" disabled>
+                        <label class="w3-label w3-validate">EGN / EIK</label>
+                    </div>
+                    <div style="width: 50%; float: right; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" id="editOwnerCity" type="text" required style="width:100%" maxlength="50">
+                        <label class="w3-label w3-validate">City</label>
+                    </div>
+                    <div style="width: 50%; float: left; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" id="editOwnerName" type="text" required style="width:100%" maxlength="50">
+                        <label class="w3-label w3-validate">First Name</label>
+                    </div>
+                    <div style="width: 50%; float: right; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" id="editOwnerFName" type="text" required style="width:100%" maxlength="50">
+                        <label class="w3-label w3-validate">Family Name</label>
+                    </div>
+                    <div class="w3-margin" style="clear: both">
+                        <input class="w3-input w3-center" id="editOwnerAddress" type="text" required style="width:100%">
+                        <label class="w3-label w3-validate">Address</label>
+                    </div>
+                    <button class="w3-btn w3-dark-grey w3-hover-light-grey w3-margin" onclick="updateOwner()">Edit</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="deleteVehicle" style="display:none">
             <div class="w3-responsive w3-card-4 w3-margin">
                 <h4>Please enter the vehicle Number Plate to delete it's record:</h4>
                 <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
@@ -162,10 +191,10 @@
                         <label class="w3-label w3-validate">Number Plate</label>
                         <div id="suggest-delVeh" class="search-autocomplete" style="display: none"></div>
                     </div>
-                    <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Delete">
+                    <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="deleteVehicle()">Delete</button>
                 </div>
             </div>
-        </form>
+        </div>
 
         <form id="deleteOwner" style="display:none" method="post" action="">
             <div class="w3-responsive w3-card-4 w3-margin">
