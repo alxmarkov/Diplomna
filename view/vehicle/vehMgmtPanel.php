@@ -125,7 +125,7 @@
             </div>
         </div>
 
-        <form id="editVehicle" style="display:none" method="post" action="">
+        <div id="editVehicle" style="display:none">
             <div class="w3-responsive w3-card-4 w3-margin">
                 <h4>Please enter the vehicle Number Plate to edit it's record:</h4>
                 <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
@@ -134,10 +134,10 @@
                         <label class="w3-label w3-validate">Number Plate</label>
                         <div id="suggest-editVeh" class="search-autocomplete" style="display: none"></div>
                     </div>
-                    <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Edit">
+                    <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="fetchVehicle()">Edit</button>
                 </div>
             </div>
-        </form>
+        </div>
 
         <div id="editOwner" style="display:none">
             <div class="w3-responsive w3-card-4 w3-margin">

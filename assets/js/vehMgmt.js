@@ -224,14 +224,14 @@ function fetchOwner() {
     request.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             var response = JSON.parse(this.responseText);
-            if (response.Error != null) {
+            if (response.Result != null) {
                 swal({
-                    text: response.Error,
+                    text: response.Result,
                     type: "info",
                     confirmButtonColor: "#009788"
                 });
             }
-            else {
+            else if (response.EGN != null){
                 document.getElementById("editOwnerID").value = response.EGN;
                 document.getElementById("editOwnerCity").value = response.City;
                 document.getElementById("editOwnerName").value = response.FirstName;
@@ -246,6 +246,32 @@ function fetchOwner() {
 }
 
 function updateOwner() {
-    alert("It Works!");
-    showEditOwnerSection();
+    var ownerId = document.getElementById("editOwnerID").value;
+    var ownerCity = document.getElementById("editOwnerCity").value;
+    var ownerName = document.getElementById("editOwnerName").value;
+    var ownerFname = document.getElementById("editOwnerFName").value;
+    var ownerAddress = document.getElementById("editOwnerAddress").value;
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var response = JSON.parse(this.responseText);
+            swal({
+                text: response.Result,
+                type: "info",
+                confirmButtonColor: "#009788"
+            });
+            if (response.Result === "Owner info successfully updated!") {
+                showEditOwnerSection();
+                document.getElementById("editOwnerID").value = "";
+                document.getElementById("editOwnerCity").value = "";
+                document.getElementById("editOwnerName").value = "";
+                document.getElementById("editOwnerFName").value = "";
+                document.getElementById("editOwnerAddress").value = "";
+                document.getElementById("search-editOwner").value = "";
+            }
+        }
+    };
+    request.open('POST', '../../controller/updateOwnerController.php');
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send("ownerID=" + ownerId + "&ownerCity=" + ownerCity + "&ownerName=" + ownerName + "&ownerFName=" + ownerFname +"&ownerAddress=" + ownerAddress);
 }

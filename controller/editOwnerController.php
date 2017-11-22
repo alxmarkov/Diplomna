@@ -14,9 +14,9 @@ if (isset($_GET['egn']) && trim($_GET['egn']) != "") {
         echo json_encode($owner);
     }
     catch (PDOException $e) {
-        echo json_encode(["Error" => "An error occurred, please try again later."]);
+        echo json_encode(["Result" => "An error occurred, please try again later."]);
     }
 }
 else {
-    echo json_encode("wtf");
+    echo json_encode(["Result" => "You can't leave empty fields!"]);
 }

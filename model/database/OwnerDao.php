@@ -36,6 +36,10 @@ class OwnerDao
                         FROM owners
                         WHERE EGN = ?";
 
+    const UPDATE_OWNER = "UPDATE owners SET
+                          City = ?, FirstName = ?, FamilyName = ?, Address = ?
+                          WHERE EGN = ?";
+
     private function __construct()
     {
         $this->pdo = DBManager::getInstance()->dbConnect();
@@ -89,5 +93,26 @@ class OwnerDao
         $statement->execute(array($egn));
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result;
+    }
+    function updateOwner (Owner $owner){
+        $managerUsername = $_SESSION['user']->getUsername();
+        $date = date("Y-m-d h:i:sa");
+        try {
+            $this->pdo->beginTransaction();
+
+            $statement = $this->pdo->prepare( self::UPDATE_OWNER);
+            $statement->execute(array($owner->getCity(), $owner->getName(), $owner->getFamilyName(), $owner->getAddress(), $owner->getEGN()));
+
+            $statement = $this->pdo->prepare(self::ADD_LOG);
+            $statement->execute(array($date, $managerUsername, "Edited Owner", $owner->getEGN(), "owners"));
+
+            $this->pdo->commit();
+            return true;
+        } catch (PDOException $e) {
+            if ($this->pdo->inTransaction()) {
+                $this->pdo->rollBack();
+            }
+            return false;
+        }
     }
 }
