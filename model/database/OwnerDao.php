@@ -26,19 +26,34 @@ class OwnerDao
                             FROM owners
                             WHERE EGN = ?";
 
+    const GET_EGN_BY_ID = "SELECT
+                            EGN
+                            FROM owners
+                            WHERE ID = ?";
+
     const GET_EGN_SUGGESTIONS = "SELECT
                                  EGN
                                  FROM owners
-                                 WHERE EGN LIKE ?";
+                                 WHERE EGN LIKE ?
+                                 AND Hidden = 0";
 
     const GET_BY_EGN = "SELECT
                         EGN, City, FirstName, FamilyName, Address
                         FROM owners
-                        WHERE EGN = ?";
+                        WHERE EGN = ? 
+                        AND Hidden = 0";
 
     const UPDATE_OWNER = "UPDATE owners SET
                           City = ?, FirstName = ?, FamilyName = ?, Address = ?
                           WHERE EGN = ?";
+
+    const DELETE_OWNER = "UPDATE owners SET
+                          Hidden = 1
+                          WHERE ID = ?";
+
+    const HIDE_EGN = "UPDATE owners SET
+                      EGN = ?
+                      WHERE ID = ?";
 
     private function __construct()
     {
@@ -82,6 +97,12 @@ class OwnerDao
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result['ID'];
     }
+    function getEGNByID($id) {
+        $statement = $this->pdo->prepare( self::GET_EGN_BY_ID);
+        $statement->execute(array($id));
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result['EGN'];
+    }
     function getEgnSuggestions ($partOfEGN) {
         $statement = $this->pdo->prepare( self::GET_EGN_SUGGESTIONS);
         $statement->execute(array("$partOfEGN%"));
@@ -113,6 +134,32 @@ class OwnerDao
                 $this->pdo->rollBack();
             }
             return false;
+        }
+        }
+    function deleteOwnerByEGN ($egn) {
+        $managerUsername = $_SESSION['user']->getUsername();
+        $date = date("Y-m-d h:i:sa");
+        try {
+            $this->pdo->beginTransaction();
+
+            $ownerId = $this->getIdByEGN($egn);
+
+            $statement = $this->pdo->prepare( self::DELETE_OWNER);
+            $statement->execute(array($ownerId));
+
+            $statement = $this->pdo->prepare( self::HIDE_EGN);
+            $statement->execute(array("H_" . time(), $ownerId));
+
+            $statement = $this->pdo->prepare(self::ADD_LOG);
+            $statement->execute(array($date, $managerUsername, "Deleted Owner", $egn, "owners"));
+
+            $this->pdo->commit();
+            return true;
+        } catch (PDOException $e) {
+            if ($this->pdo->inTransaction()) {
+                $this->pdo->rollBack();
+            }
+            return $e->getMessage();
         }
     }
 }

@@ -134,10 +134,72 @@
                         <label class="w3-label w3-validate">Number Plate</label>
                         <div id="suggest-editVeh" class="search-autocomplete" style="display: none"></div>
                     </div>
-                    <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="fetchVehicle()">Edit</button>
+                    <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="fetchVehicle()">Select</button>
                 </div>
             </div>
         </div>
+
+        <form id="editVehicleSection" style="display:none" method="post" enctype="multipart/form-data" action="../../controller/updateVehicleController.php">
+            <div class="w3-responsive w3-card-4 w3-margin">
+                <h4>Edit Vehicle Information:</h4>
+                <p>Please enter the vehicle Number Plate in the format "XnnnnXX" or "XXnnnnXX" where "X" are latin letters and "n" are arabic numbers.</p>
+                <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
+                    <div style="width: 100%; margin: 0; padding: 2px">
+                        <label class="w3-label">Vehicle Type: </label>
+                        <input class="w3-w3-input w3-center w3-disabled" name="editType" id="editType" type="text" required style="width: 80%" readonly>
+                    </div>
+                    <div style="width: 50%; float: left; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center w3-disabled" name="editVin" id="editVin" type="text" required style="text-transform:uppercase;width: 100%" maxlength="20" readonly>
+                        <label class="w3-label w3-validate">Vehicle Identification Number</label>
+                    </div>
+                    <div style="width: 50%; float: right; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="editNumberplate" id="editNumberplate" type="text" required style="text-transform:uppercase;width:100%" maxlength="8">
+                        <label class="w3-label w3-validate">Number Plate</label>
+                    </div>
+
+                    <div style="width: 50%; float: left; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center w3-disabled" name="editMake" id="editMake" type="text" required style="width:100%" maxlength="50" readonly>
+                        <label class="w3-label w3-validate">Make</label>
+                    </div>
+                    <div style="width: 50%; float: right; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center w3-disabled" name="editModel" id="editModel" type="text" required style="width:100%" maxlength="50" readonly>
+                        <label class="w3-label w3-validate">Model</label>
+                    </div>
+                    <div style="width: 50%; float: left; margin: 0px 0px 10px 0px; padding: 2px">
+                        <label class="w3-label">Engine Type: </label>
+                        <select class="w3-select" name="editEngineType" id="editEngineType" required style="width: 50%">
+                            <option value="Petrol">Petrol</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Electric">Electric</option>
+                            <option value="Hybrid">Hybrid</option>
+                        </select>
+                    </div>
+                    <div style="width: 50%; float: right; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="editEngineSize" id="editEngineSize" type="text" required style="width:100%" maxlength="50">
+                        <label class="w3-label w3-validate">Engine Size</label>
+                    </div>
+                    <div style="width: 50%; float: left; margin: 10px 0px 0px 0px; padding: 2px">
+                        <label class="w3-label">Production Date:</label>
+                        <input class="w3-select w3-disabled" name="editYear" id="editYear" type="date" required style="width:50%" readonly>
+                    </div>
+                    <div style="width: 50%; float: right; margin: 0; padding: 2px">
+                        <input class="w3-input w3-center" name="editColor" id="editColor" type="text" required style="width:100%" maxlength="50">
+                        <label class="w3-label w3-validate">Color</label>
+                    </div>
+                    <div class="w3-margin" style="clear: both">
+                        <label class="w3-label">Picture of vehicle: </label>
+                        <img id="viewVehPicture" src="" width="50%" height="auto">
+                        <input type="file" name="editPicture" style="width: 50%" accept="image/*">
+                    </div>
+                    <div style="width: 100%; float: left; margin: 0; padding: 2px; position: relative">
+                        <input class="w3-input w3-center" name="editOwnerID" id="search-updateVeh" type="text" required style="width:100%" maxlength="10" onkeyup="getSuggestions('egn', 'updateVeh')" autocomplete="off">
+                        <label class="w3-label w3-validate">Owner EGN / EIK</label>
+                        <div id="suggest-updateVeh" class="search-autocomplete" style="display: none"></div>
+                    </div>
+                    <input class="w3-btn w3-dark-grey w3-hover-light-grey w3-margin" type="submit" value="Edit">
+                </div>
+            </div>
+        </form>
 
         <div id="editOwner" style="display:none">
             <div class="w3-responsive w3-card-4 w3-margin">
@@ -148,7 +210,7 @@
                         <label class="w3-label w3-validate">EGN / EIK</label>
                         <div id="suggest-editOwner" class="search-autocomplete" style="display: none"></div>
                     </div>
-                    <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="fetchOwner()">Edit</button>
+                    <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="fetchOwner()">Select</button>
                 </div>
             </div>
         </div>
@@ -196,7 +258,7 @@
             </div>
         </div>
 
-        <form id="deleteOwner" style="display:none" method="post" action="">
+        <div id="deleteOwner" style="display:none">
             <div class="w3-responsive w3-card-4 w3-margin">
                 <h4>Please enter the owners EGN or EIK to delete his record:</h4>
                 <div class="w3-center w3-margin" style="width: 60%; display: inline-block">
@@ -205,10 +267,10 @@
                         <label class="w3-label w3-validate">EGN / EIK</label>
                         <div id="suggest-delOwner" class="search-autocomplete" style="display: none"></div>
                     </div>
-                    <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Delete">
+                    <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="deleteOwner()">Delete</button>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
     <script src="../../assets/js/vehMgmt.js"></script>

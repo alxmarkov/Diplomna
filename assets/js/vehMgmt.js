@@ -5,6 +5,7 @@ var addOwner = document.getElementById('addOwner');
 var delOwner = document.getElementById('deleteOwner');
 var editOwner = document.getElementById('editOwner');
 var editOwnerSection = document.getElementById('editOwnerSection');
+var editVehicleSection = document.getElementById('editVehicleSection');
 
 function showAddVehicle() {
     if (addVehicle.style.display !== 'none') {
@@ -18,6 +19,7 @@ function showAddVehicle() {
         editOwner.style.display = 'none';
         delOwner.style.display = 'none';
         editOwnerSection.style.display = 'none';
+        editVehicleSection.style.display = 'none';
     }
 }
 
@@ -33,6 +35,7 @@ function showDeleteVehicle() {
         editOwner.style.display = 'none';
         delOwner.style.display = 'none';
         editOwnerSection.style.display = 'none';
+        editVehicleSection.style.display = 'none';
     }
 }
 
@@ -48,6 +51,7 @@ function showEditVehicle() {
         editOwner.style.display = 'none';
         delOwner.style.display = 'none';
         editOwnerSection.style.display = 'none';
+        editVehicleSection.style.display = 'none';
     }
 }
 function showAddOwner() {
@@ -62,6 +66,7 @@ function showAddOwner() {
         editOwner.style.display = 'none';
         delOwner.style.display = 'none';
         editOwnerSection.style.display = 'none';
+        editVehicleSection.style.display = 'none';
     }
 }
 
@@ -77,6 +82,7 @@ function showEditOwner() {
         addOwner.style.display = 'none';
         delOwner.style.display = 'none';
         editOwnerSection.style.display = 'none';
+        editVehicleSection.style.display = 'none';
     }
 }
 
@@ -92,6 +98,7 @@ function showDeleteOwner() {
         addOwner.style.display = 'none';
         editOwner.style.display = 'none';
         editOwnerSection.style.display = 'none';
+        editVehicleSection.style.display = 'none';
     }
 }
 function showEditOwnerSection() {
@@ -106,6 +113,22 @@ function showEditOwnerSection() {
         addOwner.style.display = 'none';
         editOwner.style.display = 'none';
         delOwner.style.display = 'none';
+        editVehicleSection.style.display = 'none';
+    }
+}
+function showEditVehicleSection() {
+    if (editVehicleSection.style.display !== 'none') {
+        editVehicleSection.style.display = 'none';;
+    }
+    else {
+        editVehicleSection.style.display = 'block';
+        addVehicle.style.display = 'none';
+        delVehicle.style.display = 'none';
+        editVehicle.style.display = 'none';
+        addOwner.style.display = 'none';
+        editOwner.style.display = 'none';
+        delOwner.style.display = 'none';
+        editOwnerSection.style.display = 'none';
     }
 }
 
@@ -185,7 +208,56 @@ function deleteVehicle() {
             cancelButtonColor: '#009788',
         confirmButtonText: 'Yes, delete it!'
     }).then(function () {
-
+        var np = document.getElementById("search-delVeh").value;
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var response = JSON.parse(this.responseText);
+                swal({
+                    text: response.Result,
+                    type: "info",
+                    confirmButtonColor: "#009788"
+                });
+                if (response.Result === "Vehicle successfully deleted.") {
+                    showDeleteVehicle();
+                    document.getElementById("search-delVeh").value = "";
+                }
+            }
+        };
+        request.open('POST', '../../controller/deleteVehicleController.php');
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.send("np=" + np);
+    });
+}
+function deleteOwner() {
+    swal({
+        title: 'Are you sure you want to delete this owner?',
+        text: "You will not be able to recover this owner!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#009788',
+        confirmButtonText: 'Yes, delete it!'
+    }).then(function () {
+        var egn = document.getElementById("search-delOwner").value;
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var response = JSON.parse(this.responseText);
+                swal({
+                    text: response.Result,
+                    type: "info",
+                    confirmButtonColor: "#009788"
+                });
+                if (response.Result === "Owner successfully deleted.") {
+                    showDeleteOwner();
+                    document.getElementById("search-delOwner").value = "";
+                }
+            }
+        };
+        request.open('POST', '../../controller/deleteOwnerController.php');
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.send("egn=" + egn);
     });
 }
 
@@ -242,6 +314,38 @@ function fetchOwner() {
         }
     };
     request.open('GET', '../../controller/editOwnerController.php?egn=' + egn);
+    request.send();
+}
+function fetchVehicle() {
+    var np = document.getElementById('search-editVeh').value;
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var response = JSON.parse(this.responseText);
+            if (response.Result != null) {
+                swal({
+                    text: response.Result,
+                    type: "info",
+                    confirmButtonColor: "#009788"
+                });
+            }
+            else if (response.Numberplate != null){
+                document.getElementById("editType").value = response.Type;
+                document.getElementById("editVin").value = response.VIN;
+                document.getElementById("editNumberplate").value = response.Numberplate;
+                document.getElementById("editMake").value = response.Make;
+                document.getElementById("editModel").value = response.Model;
+                document.getElementById("editEngineType").value = response.EngineType;
+                document.getElementById("editEngineSize").value = response.EngineSize;
+                document.getElementById("editYear").value = response.DateOfFirstRegistration;
+                document.getElementById("editColor").value = response.Color;
+                document.getElementById("viewVehPicture").src = "../../" + response.PicturePath;
+                document.getElementById("search-updateVeh").value = response.OwnerID;
+                showEditVehicleSection();
+            }
+        }
+    };
+    request.open('GET', '../../controller/editVehicleController.php?np=' + np);
     request.send();
 }
 
