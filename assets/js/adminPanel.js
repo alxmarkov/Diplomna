@@ -128,7 +128,12 @@ function changeActive(action) {
                     for (var p in response.Log) {
                         lastLogContent += "<tr>";
                         for (var q in response.Log[p]) {
-                            lastLogContent += "<td>" + response.Log[p][q] + "</td>";
+                            if(response.Log[p][q] !== null) {
+                                lastLogContent += "<td>" + response.Log[p][q] + "</td>";
+                            }
+                            else {
+                                lastLogContent += "<td></td>"
+                            }
                         }
                         lastLogContent += "</tr>";
                     }
@@ -190,7 +195,12 @@ function createUser() {
                 for (p in response.Log) {
                     lastLogContent += "<tr>";
                     for (q in response.Log[p]) {
-                        lastLogContent += "<td>" + response.Log[p][q] + "</td>";
+                        if(response.Log[p][q] !== null) {
+                            lastLogContent += "<td>" + response.Log[p][q] + "</td>";
+                        }
+                        else {
+                            lastLogContent += "<td></td>"
+                        }
                     }
                     lastLogContent += "</tr>";
                 }
