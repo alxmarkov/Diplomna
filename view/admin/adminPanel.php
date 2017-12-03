@@ -21,34 +21,34 @@
 
     <div class="w3-card-2 w3-padding-top w3-padding-bottom" style="min-height:360px;width:80%">
         <h4>Select action from the buttons below:</h4>
-        <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="addUser()">Add User</button>
-        <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="deActUser()">Deactivate User</button>
-        <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="actUser()">Activate User</button>
+        <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="showAddUser()">Add User</button>
+        <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="showDeactUser()">Deactivate User</button>
+        <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="showActUser()">Activate User</button>
 
-        <form id="addUser" class="w3-margin-top w3-margin-bottom" style="display:none" method="post" action="../../controller/addUserController.php">
+        <div id="addUser" class="w3-margin-top w3-margin-bottom" style="display:none">
             <table style="width:80%">
                 <tr>
                     <td>
                         <div align="center">
-                            <input class="w3-input w3-center" name='Username' type="text" required style="width:200px">
+                            <input class="w3-input w3-center" id='Username' type="text" required style="width:200px">
                             <label class="w3-label w3-validate">Username</label>
                         </div>
                     </td>
                     <td>
                         <div align="center">
-                            <input class="w3-input w3-center" name='Password' type="password" required style="width:200px">
+                            <input class="w3-input w3-center" id='Password' type="password" required style="width:200px">
                             <label class="w3-label w3-validate">Password</label>
                         </div>
                     </td>
                     <td>
                         <div align="center">
-                            <input class="w3-input w3-center" name='ConfirmPassword' type="password" required style="width:200px">
+                            <input class="w3-input w3-center" id='ConfirmPassword' type="password" required style="width:200px">
                             <label class="w3-label w3-validate">Confirm Password</label>
                         </div>
                     </td>
                     <td>
                         <div align="center">
-                            <select name="Role">
+                            <select id="Role">
                                 <option value="select">Select</option>
                                 <option value="administrator">Administrator</option>
                                 <option value="vehiclemanager">Vehicle Manager</option>
@@ -62,49 +62,50 @@
                         </div>
                     </td>
                     <td>
-                        <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Add">
+                        <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="createUser()">Add</button>
                     </td>
                 </tr>
             </table>
-        </form>
+        </div>
 
-        <form id="deActUser" class="w3-margin-top w3-margin-bottom" style="display:none" method="post" action="../../controller/changeUserActiveController.php">
+        <div id="deactUser" class="w3-margin-top w3-margin-bottom" style="display:none">
             <input type="hidden" name="action" value="deactUser">
             <table style="width:30%">
                 <tr>
                     <td>
-                        <div align="center">
-                            <input class="w3-input w3-center" name='Username' type="text" required style="width:200px">
+                        <div align="center" style="position: relative">
+                            <input class="w3-input w3-center" id='search-deactUser' type="text" required style="width:200px" onkeyup="getUserSuggestions('deactUser')" autocomplete="off">
                             <label class="w3-label w3-validate">Username</label>
+                            <div id="suggest-deactUser" class="search-autocomplete" style="display: none"></div>
                         </div>
                     </td>
                     <td>
-                        <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Deactivate">
+                        <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="changeActive('deactUser')">Deactivate</button>
                     </td>
                 </tr>
             </table>
-        </form>
+        </div>
 
-        <form id="actUser" class="w3-margin-top w3-margin-bottom" style="display:none" method="post" action="../../controller/changeUserActiveController.php">
-            <input type="hidden" name="action" value="actUser">
+        <div id="actUser" class="w3-margin-top w3-margin-bottom" style="display:none">
             <table style="width:30%">
                 <tr>
                     <td>
-                        <div align="center">
-                            <input class="w3-input w3-center" name='Username' type="text" required style="width:200px">
+                        <div align="center" style="position: relative">
+                            <input class="w3-input w3-center" id='search-actUser' type="text" required style="width:200px" onkeyup="getUserSuggestions('actUser')" autocomplete="off">
                             <label class="w3-label w3-validate">Username</label>
+                            <div id="suggest-actUser" class="search-autocomplete" style="display: none"></div>
                         </div>
                     </td>
                     <td>
-                        <input class="w3-btn w3-dark-grey w3-hover-light-grey" type="submit" value="Activate">
+                        <button class="w3-btn w3-dark-grey w3-hover-light-grey" onclick="changeActive('actUser')">Activate</button>
                     </td>
                 </tr>
             </table>
-        </form>
+        </div>
 
         <h4>Newest Users:</h4>
         <div class="w3-responsive w3-card-4 w3-margin-top w3-margin-bottom" style="width:35%">
-            <table class="w3-table w3-striped w3-bordered">
+            <table class="w3-table w3-striped w3-bordered" id="lastUsers">
                 <?php
                     if (isset($lastAddedUsers[0])) {
                         echo "<tr>";
@@ -115,7 +116,13 @@
                         for($i = 0; $i < count($lastAddedUsers); $i++) {
                             echo "<tr>";
                             foreach ($lastAddedUsers[$i] as $key => $value) {
-                                echo "<td>" . $value . "</td>";
+                                if ($value == "YES" || $value == "NO") {
+                                    $username = $lastAddedUsers[$i]['Username'];
+                                    echo "<td id='$username'>" . $value . "</td>";
+                                }
+                                else {
+                                    echo "<td>" . $value . "</td>";
+                                }
                             }
                             echo "</tr>";
                         }
@@ -127,7 +134,7 @@
 
         <h4>Latest updates on the database:</h4>
         <div class="w3-responsive w3-card-4 w3-margin-top w3-margin-bottom" style="width:90%">
-            <table class="w3-table w3-striped w3-bordered">
+            <table class="w3-table w3-striped w3-bordered" id="lastLog">
                 <?php
                 if (isset($lastLogEntries[0])) {
                     echo "<tr>";
@@ -154,63 +161,7 @@
     </div>
 
 </div>
-
-<script type="text/javascript">
-    function addUser() {
-        var au = document.getElementById('addUser');
-        var du = document.getElementById('deActUser');
-        var actu = document.getElementById('actUser');
-        if (au.style.display !== 'none') {
-            au.style.display = 'none';
-        }
-        else {
-            if(du.style.display !== 'none' || actu.style.display !== 'none'){
-                au.style.display = 'block';
-                du.style.display = 'none';
-                actu.style.display = 'none';
-            }
-            else {
-                au.style.display = 'block';
-            }
-        }
-    }
-    function deActUser() {
-        var du = document.getElementById('deActUser');
-        var au = document.getElementById('addUser');
-        var actu = document.getElementById('actUser');
-        if (du.style.display !== 'none') {
-            du.style.display = 'none';
-        }
-        else {
-            if(au.style.display !== 'none' || actu.style.display !== 'none'){
-                du.style.display = 'block';
-                au.style.display = 'none';
-                actu.style.display = 'none';
-            }
-            else {
-                du.style.display = 'block';
-            }
-        }
-    }
-    function actUser() {
-        var du = document.getElementById('deActUser');
-        var au = document.getElementById('addUser');
-        var actu = document.getElementById('actUser');
-        if (actu.style.display !== 'none') {
-            actu.style.display = 'none';
-        }
-        else {
-            if(au.style.display !== 'none' || du.style.display !== 'none'){
-                actu.style.display = 'block';
-                au.style.display = 'none';
-                du.style.display = 'none';
-            }
-            else {
-                actu.style.display = 'block';
-            }
-        }
-    }
-</script>
+    <script src="../../assets/js/adminPanel.js"></script>
 
 <?php
     include_once ("../components/footer.php");

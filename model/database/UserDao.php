@@ -36,6 +36,11 @@ class UserDao
                               ORDER BY logins.DateAdded DESC 
                               LIMIT 5";
 
+    const GET_USERNAME_SUGGESTIONS = "SELECT
+                                 Username
+                                 FROM logins
+                                 WHERE Username LIKE ?";
+
     private function __construct()
     {
         $this->pdo = DBManager::getInstance()->dbConnect();
@@ -176,5 +181,12 @@ class UserDao
         $statement->execute();
         $users = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $users;
+    }
+
+    function getUsernameSuggestions ($partOfUsername) {
+        $statement = $this->pdo->prepare( self::GET_USERNAME_SUGGESTIONS);
+        $statement->execute(array("$partOfUsername%"));
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 }
