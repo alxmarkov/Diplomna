@@ -17,19 +17,19 @@ if (isset($_SESSION["user"])) {
             break;
         }
         case "33": {
-            $page = "view/admin/adminPanel.php";
+            $page = "view/vehicle/insPanel.php";
             break;
         }
         case "44": {
-            $page = "view/admin/adminPanel.php";
+            $page = "view/vehicle/motPanel.php";
             break;
         }
         case "55": {
-            $page = "view/admin/adminPanel.php";
+            $page = "view/vehicle/taxPanel.php";
             break;
         }
         case "66": {
-            $page = "view/admin/adminPanel.php";
+            $page = "view/admin/invPanel.php";
             break;
         }
         default : {
